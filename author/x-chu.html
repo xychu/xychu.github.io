@@ -46,19 +46,97 @@
         
 
             <article>
-                <a href="http://edgedef.com/my-first-post.html"><h3 class="article-title">My first post</h3></a>
-<h6 class="subheader" title="2014-05-08T00:00:00">Thu 08 May 2014
+                <a href="http://edgedef.com/test.html"><h3 class="article-title">test</h3></a>
+<h6 class="subheader" title="2014-05-09T00:00:00">Fri 09 May 2014
 </h6>
 
 
-<p>希望自己能够一直有值得和大家分享的东西。</p><p class="subheader">Category: <a href="http://edgedef.com/category/others.html">others</a>
+<h2>test code</h2>
+<div class="highlight"><pre><span class="k">def</span> <span class="nf">serve</span><span class="p">():</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">deploy_path</span><span class="p">)</span>
+
+    <span class="n">PORT</span> <span class="o">=</span> <span class="mi">8000</span>
+    <span class="k">class</span> <span class="nc">AddressReuseTCPServer</span><span class="p">(</span><span class="n">SocketServer</span><span class="o">.</span><span class="n">TCPServer</span><span class="p">):</span>
+        <span class="n">allow_reuse_address</span> <span class="o">=</span> <span class="bp">True</span>
+
+    <span class="n">server</span> <span class="o">=</span> <span class="n">AddressReuseTCPServer</span><span class="p">((</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">PORT</span><span class="p">),</span> <span class="n">SimpleHTTPServer</span><span class="o">.</span><span class="n">SimpleHTTPRequestHandler</span><span class="p">)</span>
+
+    <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;Serving on port {0} ...</span><span class="se">\n</span><span class="s">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">PORT</span><span class="p">))</span>
+    <span class="n">server</span><span class="o">.</span><span class="n">serve_forever</span><span class="p">()</span>
+</pre></div>
+
+
+<h2>test image</h2>
+<p><img alt="test image show" src="images/docker_images.png" title="test" /></p>
+<h2>test math</h2>
+<p>\begin{align}
+\Box_n &amp;= \sum_{1 \le k \le n} {k ^2} \
+            &amp;= \sum_{1 \le k \le n}{(\sum_{1 \le j \le k}{k})} &amp; skipped\
+            &amp;= \sum_{1 \le j \le k \le n} {k} \
+            &amp;= \sum_{1 \le j \le n}{(\sum_{j \le k \le n}{k})} \
+            ...
+\end{align}</p><script type= "text/javascript">
+    if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+        var mathjaxscript = document.createElement('script');
+        mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+        mathjaxscript.type = 'text/javascript';
+        mathjaxscript.src = 'https:' == document.location.protocol
+                ? 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+                : 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+        mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+            "MathJax.Hub.Config({" +
+            "    config: ['MMLorHTML.js']," +
+            "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+            "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+            "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+            "    displayAlign: 'center'," +
+            "    displayIndent: '0em'," +
+            "    showMathMenu: true," +
+            "    tex2jax: { " +
+            "        inlineMath: [ ['$','$'] ], " +
+            "        displayMath: [ ['$$','$$'] ]," +
+            "        processEscapes: true," +
+            "        preview: 'TeX'," +
+            "    }, " +
+            "    'HTML-CSS': { " +
+            "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+            "    } " +
+            "}); ";
+        (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+    }
+</script>
+<p class="subheader">Category: <a href="http://edgedef.com/category/misc.html">misc</a>
 
 </p>
 
 
 
-<p><a href="http://edgedef.com/my-first-post.html#disqus_thread">comments</a></p>            </article>
+<p><a href="http://edgedef.com/test.html#disqus_thread">comments</a></p>            </article>
 
+
+                <hr  class="gradient"/>
+
+
+        
+
+
+            <article>
+                <a href="http://edgedef.com/my-first-post.html"><h3 class="article-title">My first post</h3></a>
+<h6 class="subheader" title="2014-05-08T00:00:00">Thu 08 May 2014
+</h6>
+
+
+<p>First Post</p><p class="subheader">Category: <a href="http://edgedef.com/category/misc.html">misc</a>
+
+</p>
+
+
+
+<p><a href="http://edgedef.com/my-first-post.html#disqus_thread">comments</a></p>                <a class="button radius secondary small right" href="http://edgedef.com/my-first-post.html">Read More</a>
+                <hr  class="gradient"/>
+            </article>
+
+            <!-- /#posts-list -->
 <div class="pagination-centered">
 <h6 class="subheader">Page 1 of 1</h6>
 
@@ -66,10 +144,6 @@
 
 </p>
 </div>
-
-
-
-            <!-- /#posts-list -->
 
     </div>
     <!-- End Main Content -->
@@ -85,7 +159,7 @@
 		
         <h5 class="sidebar-title">Categories</h5>
         <ul class="side-nav">
-            <li><a href="http://edgedef.com/category/others.html">others</a></li>
+            <li><a href="http://edgedef.com/category/misc.html">misc</a></li>
    
         </ul>
 
@@ -133,3 +207,6 @@
 <a href="http://github.com/xychu/xychu_pelican">
 <img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub" />
 </a>
+<script type="text/javascript"
+  src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
