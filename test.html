@@ -6,11 +6,11 @@
 
     <title>test</title>
 
-    <link rel="stylesheet" href="http://edgedef.com/theme/css/normalize.css" />
-    <link rel="stylesheet" href="http://edgedef.com/theme/css/foundation.min.css" />
-    <link rel="stylesheet" href="http://edgedef.com/theme/css/style.css" />
-    <link rel="stylesheet" href="http://edgedef.com/theme/css/pygments.css" />	
-    <script src="http://edgedef.com/theme/js/custom.modernizr.js"></script>
+    <link rel="stylesheet" href="./theme/css/normalize.css" />
+    <link rel="stylesheet" href="./theme/css/foundation.min.css" />
+    <link rel="stylesheet" href="./theme/css/style.css" />
+    <link rel="stylesheet" href="./theme/css/pygments.css" />	
+    <script src="./theme/js/custom.modernizr.js"></script>
 </head>
 
 <body>
@@ -20,7 +20,7 @@
 <div class="top-bar">
 <div class="row">
     <div class="large-9 large-centered columns">
-	    <h1><a href="http://edgedef.com">EdgeDef: Do Things You Cannot Do</a></h1>
+	    <h1><a href=".">Edge Define: To Extend</a></h1>
     </div>
 </div>
 </div>
@@ -44,25 +44,25 @@
     <div class="large-9 columns">
 <article>
     <header>
-        <h3 class="article-title"><a href="http://edgedef.com/test.html" rel="bookmark"
+        <h3 class="article-title"><a href="./test.html" rel="bookmark"
         title="Permalink to test">test</a></h3>
     </header>
 
-<h6 class="subheader" title="2014-05-09T00:00:00">Fri 09 May 2014
+<h6 class="subheader" title="2016-12-05T00:00:00+08:00">Mon 05 December 2016
 </h6>
 
 
     <h2>test code</h2>
-<div class="highlight"><pre><span class="k">def</span> <span class="nf">serve</span><span class="p">():</span>
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">serve</span><span class="p">():</span>
     <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span><span class="n">env</span><span class="o">.</span><span class="n">deploy_path</span><span class="p">)</span>
 
     <span class="n">PORT</span> <span class="o">=</span> <span class="mi">8000</span>
     <span class="k">class</span> <span class="nc">AddressReuseTCPServer</span><span class="p">(</span><span class="n">SocketServer</span><span class="o">.</span><span class="n">TCPServer</span><span class="p">):</span>
         <span class="n">allow_reuse_address</span> <span class="o">=</span> <span class="bp">True</span>
 
-    <span class="n">server</span> <span class="o">=</span> <span class="n">AddressReuseTCPServer</span><span class="p">((</span><span class="s">&#39;&#39;</span><span class="p">,</span> <span class="n">PORT</span><span class="p">),</span> <span class="n">SimpleHTTPServer</span><span class="o">.</span><span class="n">SimpleHTTPRequestHandler</span><span class="p">)</span>
+    <span class="n">server</span> <span class="o">=</span> <span class="n">AddressReuseTCPServer</span><span class="p">((</span><span class="s1">&#39;&#39;</span><span class="p">,</span> <span class="n">PORT</span><span class="p">),</span> <span class="n">SimpleHTTPServer</span><span class="o">.</span><span class="n">SimpleHTTPRequestHandler</span><span class="p">)</span>
 
-    <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s">&#39;Serving on port {0} ...</span><span class="se">\n</span><span class="s">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">PORT</span><span class="p">))</span>
+    <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s1">&#39;Serving on port {0} ...</span><span class="se">\n</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">PORT</span><span class="p">))</span>
     <span class="n">server</span><span class="o">.</span><span class="n">serve_forever</span><span class="p">()</span>
 </pre></div>
 
@@ -70,64 +70,49 @@
 <h2>test image</h2>
 <p><img alt="test image show" src="images/docker_images.png" title="test" /></p>
 <h2>test math</h2>
-<p>\begin{align}
-\Box_n &amp;= \sum_{1 \le k \le n} {k ^2} \
-            &amp;= \sum_{1 \le k \le n}{(\sum_{1 \le j \le k}{k})} &amp; skipped\
-            &amp;= \sum_{1 \le j \le k \le n} {k} \
-            &amp;= \sum_{1 \le j \le n}{(\sum_{j \le k \le n}{k})} \
+<p>
+<div class="math">\begin{align}
+\Box_n &amp;= \sum_{1 \le k \le n} {k ^2} \\
+            &amp;= \sum_{1 \le k \le n}{(\sum_{1 \le j \le k}{k})} &amp; skipped\\
+            &amp;= \sum_{1 \le j \le k \le n} {k} \\
+            &amp;= \sum_{1 \le j \le n}{(\sum_{j \le k \le n}{k})} \\
             ...
-\end{align}</p><script type= "text/javascript">
-    if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-        var mathjaxscript = document.createElement('script');
-        mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-        mathjaxscript.type = 'text/javascript';
-        mathjaxscript.src = 'https:' == document.location.protocol
-                ? 'https://c328740.ssl.cf1.rackcdn.com/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
-                : 'http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-        mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-            "MathJax.Hub.Config({" +
-            "    config: ['MMLorHTML.js']," +
-            "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-            "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-            "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-            "    displayAlign: 'center'," +
-            "    displayIndent: '0em'," +
-            "    showMathMenu: true," +
-            "    tex2jax: { " +
-            "        inlineMath: [ ['$','$'] ], " +
-            "        displayMath: [ ['$$','$$'] ]," +
-            "        processEscapes: true," +
-            "        preview: 'TeX'," +
-            "    }, " +
-            "    'HTML-CSS': { " +
-            "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
-            "    } " +
-            "}); ";
-        (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-    }
+\end{align}</div>
+</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
+    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: 'center'," +
+        "    displayIndent: '0em'," +
+        "    showMathMenu: true," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'black ! important'} }" +
+        "    } " +
+        "}); ";
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
 </script>
-
-<p class="subheader">Category: <a href="http://edgedef.com/category/misc.html">misc</a>
+<p class="subheader">Category: <a href="./category/misc.html">misc</a>
 
 </p>
 
 
 
 
-	<h4>Comments</h4>
-    <div id="disqus_thread"></div>
-    <script type="text/javascript">
-        var disqus_shortname = 'ethanchu'
-        var disqus_identifier = "test.html";
-        var disqus_url = "http://edgedef.com/test.html";
-
-        (function() {
-            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-        })();
-    </script>
-    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 </article>
     </div>
     <!-- End Main Content -->
@@ -136,14 +121,15 @@
     <aside class="large-3 columns">
         <h5 class="sidebar-title">Site</h5>
         <ul class="side-nav">
-            <li><a href="http://edgedef.com/archives.html">Archives</a>
-            <li><a href="http://edgedef.com/tags.html">Tags</a>
+            <li><a href="./archives.html">Archives</a>
+            <li><a href="./tags.html">Tags</a>
         </ul>
 
 		
         <h5 class="sidebar-title">Categories</h5>
         <ul class="side-nav">
-            <li><a href="http://edgedef.com/category/misc.html">misc</a></li>
+            <li><a href="./category/misc.html">misc</a></li>
+            <li><a href="./category/others.html">others</a></li>
    
         </ul>
 
@@ -170,7 +156,7 @@
         <hr />
         <div class="row">
             <div class="large-6 columns">
-              <!--                  <p>EdgeDef: Do Things You Cannot Do by X-Chu</p> -->
+              <!--                  <p>Edge Define: To Extend by xychu</p> -->
                   <a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">
                       <img alt="Creative Commons License" style="border-width:0" src="http://i.creativecommons.org/l/by-nc-sa/4.0/88x31.png" />
                   </a>
@@ -178,16 +164,6 @@
             </div>
     </div>
 </footer>
-    <script type="text/javascript">
-    var _gaq = _gaq || [];
-    _gaq.push(['_setAccount', 'UA-42668868-2']);
-    _gaq.push(['_trackPageview']);
-    (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-    })();
-    </script>
 <a href="http://github.com/xychu/xychu_pelican">
 <img style="position: absolute; top: 0; right: 0; border: 0;" src="http://s3.amazonaws.com/github/ribbons/forkme_right_orange_ff7600.png" alt="Fork me on GitHub" />
 </a>
