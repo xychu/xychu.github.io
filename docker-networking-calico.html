@@ -163,12 +163,12 @@
 <img alt="Calico profile" src="images/calico_v2_profile.png" title="calico profile" /></p>
 <p>下面我们使用 net1 这个网络，在两台机器上各启动一个容器：</p>
 <p>在 calico01 上：</p>
-<div class="highlight"><pre><span></span>docker run --net net1 --name workload-A -tid busybox
+<div class="highlight"><pre>docker run --net net1 --name workload-A -tid busybox
 </pre></div>
 
 
 <p>在 calico02 上：</p>
-<div class="highlight"><pre><span></span>docker run --net net1 --name workload-B -tid busybox
+<div class="highlight"><pre>docker run --net net1 --name workload-B -tid busybox
 </pre></div>
 
 
@@ -177,23 +177,23 @@
 <img alt="ip connect 2" src="images/calico_v2_ip_connect_2.png" title="ip connect 2" /></p>
 <h3>Demo 2: MacVLAN 二层互联</h3>
 <p>创建 MacVLAN 网络，分别在两台主机上使用相同命令</p>
-<div class="highlight"><pre><span></span>docker network create -d macvlan --subnet=192.168.1.0/24 --gateway=192.168.1.1 -o parent=enp0s3 -o macvlan_mode=bridge 192_1
+<div class="highlight"><pre>docker network create -d macvlan --subnet=192.168.1.0/24 --gateway=192.168.1.1 -o parent=enp0s3 -o macvlan_mode=bridge 192_1
 </pre></div>
 
 
 <p>创建容器：</p>
 <p>10.1.1.105:</p>
-<div class="highlight"><pre><span></span>docker run --net=192_1 --ip=192.168.1.168 -id --name test01 busybox sh
+<div class="highlight"><pre>docker run --net=192_1 --ip=192.168.1.168 -id --name test01 busybox sh
 </pre></div>
 
 
 <p>10.1.1.106:</p>
-<div class="highlight"><pre><span></span>docker run --net=192_1 --ip=192.168.1.188 -id --name test11 busybox sh
+<div class="highlight"><pre>docker run --net=192_1 --ip=192.168.1.188 -id --name test11 busybox sh
 </pre></div>
 
 
 <p>测试网络连通性：</p>
-<div class="highlight"><pre><span></span>docker exec test01 ping -c 4 192.168.1.188
+<div class="highlight"><pre>docker exec test01 ping -c 4 192.168.1.188
 </pre></div>
 
 
@@ -208,7 +208,7 @@
 那它就会 match 到响应的路由规则 <code>192.168.38.192/26 via 10.1.1.104</code>，将数据包转发给主机 2，主机 2 在根据 <code>192.168.38.195 dev cali2f648c3dc3f</code>
 把数据包发到对应的 veth pair 上，交给 kernel。</p>
 <p>那整个数据流就是：</p>
-<div class="highlight"><pre><span></span>container -&gt; calico01 -&gt; one or more hops -&gt;  calico02 -&gt; container
+<div class="highlight"><pre>container -&gt; calico01 -&gt; one or more hops -&gt;  calico02 -&gt; container
 </pre></div>
 
 
@@ -273,6 +273,7 @@ http://docs.projectcalico.org/master/reference/private-cloud/l3-interconnect-fab
 		
         <h5 class="sidebar-title">Categories</h5>
         <ul class="side-nav">
+            <li><a href="./category/bigdata.html">bigdata</a></li>
             <li><a href="./category/others.html">others</a></li>
    
         </ul>

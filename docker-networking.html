@@ -146,7 +146,7 @@
 <li>Profile，定义 Docker network Policy 的集合，由 tags 和 rules 组成；每个 Profile 默认拥有一个和 Profile 名字相同的 Tag，每个 Profile 可以有多个 Tag，以 List 形式保存;</li>
 </ul>
 <p>Profile 样例：</p>
-<div class="highlight"><pre><span></span>Inbound rules:
+<div class="highlight"><pre>Inbound rules:
   1 allow from tag WEB 
   2 allow tcp to ports 80,443
 Outbound rules:
@@ -171,7 +171,7 @@ Outbound rules:
 <img alt="Calico profile" src="images/calico_profile.png" title="calico profile" /></p>
 <p>下面我们使用 dataman 这个网络，在两台 slave 机器上各启动一个容器：</p>
 <p>数人云 下发容器的 Marathon json file:</p>
-<div class="highlight"><pre><span></span>{
+<div class="highlight"><pre>{
   &quot;id&quot;: &quot;/nginx-calico&quot;,
   &quot;cmd&quot;: null,
   &quot;cpus&quot;: 0.1,
@@ -220,7 +220,7 @@ Outbound rules:
 <img alt="slave route 2" src="images/route_slave_2.png" title="route slave 2" /></p>
 <p>对照两台 slave 的路由表，我们就知道，如果 slave 1 上的容器(10.0.0.48)想要发送数据到 slave 2 上的容器(192.168.115.193)，
 那它就会 match 到最后一条路由规则，将数据包转发给 slave 2(192.168.99.103)，那整个数据流就是：</p>
-<div class="highlight"><pre><span></span>container -&gt; kernel -&gt; (cali2f0e)slave 1 -&gt; one or more hops -&gt; (192.168.99.103)slave 2 -&gt; kernel -&gt; (cali7d73)container
+<div class="highlight"><pre>container -&gt; kernel -&gt; (cali2f0e)slave 1 -&gt; one or more hops -&gt; (192.168.99.103)slave 2 -&gt; kernel -&gt; (cali7d73)container
 </pre></div>
 
 
@@ -253,7 +253,7 @@ Outbound rules:
 <p>时延对比结果如下：</p>
 <p><img alt="lat" src="images/lat.png" title="latency compare" /></p>
 <p>qperf 命令：</p>
-<div class="highlight"><pre><span></span># server 端
+<div class="highlight"><pre># server 端
 $ qperf
 # client 端
 # 持续 10s 发送 64k 数据包，tcp_bw 表示带宽，tcp_lat 表示延迟
@@ -298,6 +298,7 @@ $ qperf -oo msg_size:1:64k:*2 192.168.2.10 tcp_bw tcp_lat
 		
         <h5 class="sidebar-title">Categories</h5>
         <ul class="side-nav">
+            <li><a href="./category/bigdata.html">bigdata</a></li>
             <li><a href="./category/others.html">others</a></li>
    
         </ul>
