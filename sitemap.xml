@@ -5,30 +5,44 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://edgedef.com/index.html</loc>
-<lastmod>2016-12-15T11:07:45-00:00</lastmod>
+<lastmod>2018-04-28T16:25:37-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://edgedef.com/archives.html</loc>
-<lastmod>2016-12-15T11:07:45-00:00</lastmod>
+<lastmod>2018-04-28T16:25:37-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://edgedef.com/tags.html</loc>
-<lastmod>2016-12-15T11:07:45-00:00</lastmod>
+<lastmod>2018-04-28T16:25:37-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://edgedef.com/categories.html</loc>
-<lastmod>2016-12-15T11:07:45-00:00</lastmod>
+<lastmod>2018-04-28T16:25:37-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://edgedef.com/git-branching-release-model.html</loc>
+<lastmod>2018-04-03T00:00:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>http://edgedef.com/alluxio-simple-test.html</loc>
+<lastmod>2017-08-17T00:00:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
 </url>
 
 <url>
@@ -53,6 +67,20 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://edgedef.com/category/bigdata.html</loc>
+<lastmod>2017-08-17T00:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://edgedef.com/category/git.html</loc>
+<lastmod>2018-04-03T00:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://edgedef.com/category/others.html</loc>
 <lastmod>2016-12-10T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -60,7 +88,28 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://edgedef.com/tag/calico.html</loc>
+<loc>http://edgedef.com/tag/branching.html</loc>
+<lastmod>2018-04-03T00:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://edgedef.com/tag/git.html</loc>
+<lastmod>2018-04-03T00:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://edgedef.com/tag/alluxio.html</loc>
+<lastmod>2017-08-17T00:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://edgedef.com/tag/network.html</loc>
 <lastmod>2016-12-10T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
@@ -74,6 +123,27 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://edgedef.com/tag/hadoop.html</loc>
+<lastmod>2017-08-17T00:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://edgedef.com/tag/calico.html</loc>
+<lastmod>2016-12-10T00:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://edgedef.com/tag/release.html</loc>
+<lastmod>2018-04-03T00:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://edgedef.com/tag/docker.html</loc>
 <lastmod>2016-12-10T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -81,15 +151,15 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://edgedef.com/tag/network.html</loc>
-<lastmod>2016-12-10T00:00:00+08:06</lastmod>
+<loc>http://edgedef.com/tag/spark.html</loc>
+<lastmod>2017-08-17T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://edgedef.com/author/x-chu.html</loc>
-<lastmod>2016-12-10T00:00:00+08:06</lastmod>
+<lastmod>2018-04-03T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
