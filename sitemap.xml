@@ -5,30 +5,37 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://edgedef.com/index.html</loc>
-<lastmod>2018-04-28T16:25:37-00:00</lastmod>
+<lastmod>2018-05-03T18:49:48-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://edgedef.com/archives.html</loc>
-<lastmod>2018-04-28T16:25:37-00:00</lastmod>
+<lastmod>2018-05-03T18:49:48-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://edgedef.com/tags.html</loc>
-<lastmod>2018-04-28T16:25:37-00:00</lastmod>
+<lastmod>2018-05-03T18:49:48-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://edgedef.com/categories.html</loc>
-<lastmod>2018-04-28T16:25:37-00:00</lastmod>
+<lastmod>2018-05-03T18:49:48-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://edgedef.com/distributed-tensorflow.html</loc>
+<lastmod>2018-04-28T00:00:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
 </url>
 
 <url>
@@ -67,6 +74,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://edgedef.com/category/ai.html</loc>
+<lastmod>2018-04-28T00:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://edgedef.com/category/bigdata.html</loc>
 <lastmod>2017-08-17T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -88,8 +102,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://edgedef.com/tag/branching.html</loc>
-<lastmod>2018-04-03T00:00:00+08:06</lastmod>
+<loc>http://edgedef.com/tag/docker.html</loc>
+<lastmod>2016-12-10T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -102,13 +116,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://edgedef.com/tag/alluxio.html</loc>
-<lastmod>2017-08-17T00:00:00+08:06</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
 <loc>http://edgedef.com/tag/network.html</loc>
 <lastmod>2016-12-10T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -116,8 +123,15 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://edgedef.com/tag/pelican.html</loc>
-<lastmod>2014-05-08T00:00:00+08:06</lastmod>
+<loc>http://edgedef.com/tag/branching.html</loc>
+<lastmod>2018-04-03T00:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://edgedef.com/tag/ai.html</loc>
+<lastmod>2018-04-28T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -137,6 +151,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://edgedef.com/tag/distributed-.html</loc>
+<lastmod>2018-04-28T00:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://edgedef.com/tag/release.html</loc>
 <lastmod>2018-04-03T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -144,8 +165,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://edgedef.com/tag/docker.html</loc>
-<lastmod>2016-12-10T00:00:00+08:06</lastmod>
+<loc>http://edgedef.com/tag/tensorflow.html</loc>
+<lastmod>2018-04-28T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -158,8 +179,22 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://edgedef.com/tag/pelican.html</loc>
+<lastmod>2014-05-08T00:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://edgedef.com/tag/alluxio.html</loc>
+<lastmod>2017-08-17T00:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://edgedef.com/author/x-chu.html</loc>
-<lastmod>2018-04-03T00:00:00+08:06</lastmod>
+<lastmod>2018-04-28T00:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
