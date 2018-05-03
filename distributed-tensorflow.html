@@ -214,10 +214,10 @@ to run an <code>Estimator</code> model on multiple GPUs on one machine</p>
 集中式的参数同步都会造成网络瓶颈。</p>
 <p>好在 Baidu SVAIL 已经将 HPC 领域一种比较成熟的通信算法 Ring Allreduce 引入到 Deep Learning 训练框架中。</p>
 <p>引入 Ring Allreduce 之后的拓扑变化如下：</p>
-<p style="width: 1000px;">
-<img src="./images/dist-tf/ps_worker_top.jpg" alt="ps_worker_top" style="width: 450px;"/>
+<p>
+<img src="./images/dist-tf/ps_worker_top.jpg" alt="ps_worker_top" style="width: 300px;"/>
 &rarr;
-<img src="./images/dist-tf/ring_top.jpg" alt="ring_top" style="width: 450px;"/>
+<img src="./images/dist-tf/ring_top.jpg" alt="ring_top" style="width: 300px;"/>
 </p>
 
 <h3>参数更新步骤</h3>
