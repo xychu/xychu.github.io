@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bigdata on Edge Define: To Extend</title>
+    <link>https://edgedef.com/topics/bigdata/</link>
+    <description>Recent content in Bigdata on Edge Define: To Extend</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>(c) 2018 xychu.</copyright>
+    <lastBuildDate>Thu, 17 Aug 2017 23:00:36 +0800</lastBuildDate>
+    
+	<atom:link href="https://edgedef.com/topics/bigdata/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Alluxio 小调</title>
+      <link>https://edgedef.com/2017/08/17/alluxio-%E5%B0%8F%E8%B0%83/</link>
+      <pubDate>Thu, 17 Aug 2017 23:00:36 +0800</pubDate>
+      
+      <guid>https://edgedef.com/2017/08/17/alluxio-%E5%B0%8F%E8%B0%83/</guid>
+      <description>背景 Alluxio 简介 Alluxio（之前名为Tachyon）是世界上第一个以内存为中心的虚拟的分布式存储系统。它统一了数据访问的方式，为上层计算框架和底层存储系统构建了桥梁。 应用只需要连接Alluxio即可访问存储在底层任意存储系统中的数据。此外，Alluxio的以内存为中心的架构使得数据的访问速度能比现有常规方案快几个数量级。
+Alluxio 架构及组件 核心组件：
+ Master： 主从，有高可用配置方案 Worker：Alluxio的Worker负责管理分配给Alluxio的本地资源。这些资源可以是本地内存，SDD或者硬盘，其可以由用户配置。 Alluxio的Worker以块的形式存储数据，并通过读或创建数据块的方式处理来自Client读写数据的请求。但Worker只负责这些数据块上的数据；文件到块的实际映 射只会存储在Master上。 Client：与Alluxio服务端交互的入口。它为用户暴露了一组文件系统API。Client通过发起与Master 的通信来执行元数据操作，并且通过与Worker通信来读取Alluxio上的数据或者向Alluxio上写数据。  关键功能：  灵活的文件API： Alluxio的本地API类似于java.io.File类，提供了 InputStream和OutputStream的接口和对内存映射I/O的高效支持。我们推荐使用这套API以获得Alluxio的最好性能。 另外，Alluxio提供兼容Hadoop的文件系统接口，Hadoop MapReduce和Spark可以使用Alluxio代替HDFS。 层次化存储：通过分层存储，Alluxio不仅可以管理内存，也可以管理SSD 和HDD,能够让更大的数据集存储在Alluxio上。数据在不同层之间自动被管理，保证热数据在更快的存储层上。自定义策 略可以方便地加入Alluxio，而且pin的概念允许用户直接控制数据的存放位置。 统一命名空间： Alluxio通过挂载功能在不同的存储系统之间实 现高效的数据管理。并且，透明命名在持久化这些对象到底层存储系统时可以保留这些对象的文件名和目录层次结构。  关键配置：  alluxio.user.file.readtype.default CACHE_PROMOTE
+Default read type when creating Alluxio files. Valid options are CACHE_PROMOTE (move data to highest tier if already in Alluxio storage, write data into highest tier of local Alluxio if data needs to be read from under storage), CACHE (write data into highest tier of local Alluxio if data needs to be read from under storage), NO_CACHE (no data interaction with Alluxio, if the read is from Alluxio data migration or eviction will not occur).</description>
+    </item>
+    
+  </channel>
+</rss>

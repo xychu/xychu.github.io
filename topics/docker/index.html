@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Docker  &middot; Edge Define: To Extend</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="" />
+
+<meta name="keywords" content="">
+
+
+<meta property="og:title" content="Docker  &middot; Edge Define: To Extend ">
+<meta property="og:site_name" content="Edge Define: To Extend"/>
+<meta property="og:url" content="https://edgedef.com/topics/docker/" />
+<meta property="og:locale" content="zh-CN">
+
+
+<meta property="og:type" content="website" />
+
+
+
+<link href="https://edgedef.com/topics/docker/index.xml" rel="alternate" type="application/rss+xml" title="Docker" />
+
+<link rel="canonical" href="https://edgedef.com/topics/docker/" />
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://edgedef.com/touch-icon-144-precomposed.png">
+<link href="https://edgedef.com/favicon.png" rel="icon">
+
+<meta name="generator" content="Hugo 0.40.2" />
+
+  
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://edgedef.com/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://edgedef.com/css/style.css">
+<link rel="stylesheet" href="https://edgedef.com/css/highlight/default.css">
+
+  
+  
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-42668868-2', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+
+</head>
+<body>
+  <main id="main-wrapper" class="container main_wrapper has-sidebar">
+    <header id="main-header" class="container main_header">
+  <div class="container brand">
+  <div class="container title h1-like">
+  <a class="baselink" href="https://edgedef.com/">
+  EdgeDef
+
+</a>
+
+</div>
+
+  
+<div class="container topline">
+  
+  Do What You Can&rsquo;t
+
+
+</div>
+
+
+</div>
+
+  <nav class="container nav primary no-print">
+  
+
+<a class="homelink" href="https://edgedef.com/">首页</a>
+
+
+  
+<a href="https://edgedef.com/post" title="Show list of posts">posts</a>
+
+<a href="https://edgedef.com/tags" title="Show list of tags">tags</a>
+
+<a href="https://edgedef.com/topics" title="Show list of topics">topics</a>
+
+
+</nav>
+
+<div class="container nav secondary no-print">
+  
+
+
+<a id="contact-link-github" class="contact_link" href="https://github.com/xychu">
+  <span class="fa fa-github-square"></span><span>github</span></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+  
+
+</header>
+
+
+<section id="main-content" class="container main_content">
+  <header class="container">
+    <h1>Docker
+</h1>
+
+  </header>
+  
+    <article class="container content summary">
+  <div class="container hat">
+  <h2><a href="https://edgedef.com/2016/12/10/docker-%E7%BD%91%E7%BB%9C%E6%96%B9%E6%A1%88-calico-%E6%96%B0%E7%89%88%E4%B8%8A%E6%89%8B%E4%BD%93%E9%AA%8C/">Docker 网络方案 Calico 新版上手体验
+</a>
+</h2>
+
+  <time datetime="2016-12-10">10 Dec, 2016</time>
+
+</div>
+
+  <p class="container content">
+  
+  
+    摘要 距离上次聊 Calico 已经过去快半年的时间了，数人云也一直在努力将容器网络方案应用到企业客户的环境中，Calico v2.0 也马上就要发布了，这次跟大家一起感受下新版.
+需要说明下，本人跟 Calico 没有任何直接关系，也只是个&raquo;吃瓜群众&raquo;，做为使用者，想跟大家聊聊心得而已。
+这次分享的内容主要包括：
+ 简单总结下作为使用者我看到的 Calico 的变化，包括组件，文档和 calicoctl ； Demo 一些简单的例子，会和 MacVLAN 做一下对比说明原理； 最后总结下适合 Calico 的使用场景；  Calico 简介回顾 首先，还是简单的回顾下 Calico 的架构和关键组件，方便大家理解。
+Calico 架构 Calico 是一个三层的数据中心网络方案，而且方便集成 OpenStack 这种 IaaS 云架构，能够提供高效可控的 VM、容器、裸机之间的通信。
+结合上面这张图，我们来过一遍 Calico 的核心组件：
+ Felix，Calico agent，跑在每台需要运行 workload 的节点上，主要负责配置路由及 ACLs 等信息来确保 endpoint 的连通状态； etcd，分布式键值存储，主要负责网络元数据一致性，确保 Calico 网络状态的准确性； BGP Client(BIRD), 主要负责把 Felix 写入 kernel 的路由信息分发到当前 Calico 网络，确保 workload 间的通信的有效性； BGP Route Reflector(BIRD), 大规模部署时使用，摒弃所有节点互联的 mesh 模式，通过一个或者多个 BGP Route Reflector 来完成集中式的路由分发；  通过将整个互联网的可扩展 IP 网络原则压缩到数据中心级别，Calico 在每一个计算节点利用 Linux kernel 实现了一个高效的 vRouter 来负责数据转发 而每个 vRouter 通过 BGP 协议负责把自己上运行的 workload 的路由信息像整个 Calico 网络内传播 － 小规模部署可以直接互联，大规模下可通过指定的 BGP route reflector 来完成。
+  
+
+
+</p>
+
+
+  <div class="container readlink">
+  <a href="https://edgedef.com/2016/12/10/docker-%E7%BD%91%E7%BB%9C%E6%96%B9%E6%A1%88-calico-%E6%96%B0%E7%89%88%E4%B8%8A%E6%89%8B%E4%BD%93%E9%AA%8C/">Read more &rarr;</a>
+
+</div>
+
+
+</article>
+
+  
+    <article class="container content summary">
+  <div class="container hat">
+  <h2><a href="https://edgedef.com/2016/06/26/docker-%E7%BD%91%E7%BB%9C%E6%96%B9%E6%A1%88%E5%88%9D%E6%8E%A2/">Docker 网络方案初探
+</a>
+</h2>
+
+  <time datetime="2016-06-26">26 Jun, 2016</time>
+
+</div>
+
+  <p class="container content">
+  
+  
+    摘要 随着容器的火热发展，数人云 越来越多的客户对容器网络特性要求也开始越来越高，比如：
+ 一容器一IP 多主机容器互联 网络隔离 ACL 对接 SDN 等等  这次主要跟大家聊聊 Docker 的网络方案，首先是现有容器网络方案介绍， 接下来重点讲解 Calico 的特性及技术点，作为引申和对比再介绍下 Contiv 的特性, 最后给出对比测试结果。
+现有的主要 Docker 网络方案 首先简单介绍下现有的容器网络方案，网上也看了好多对比，大家之前都是基于实现方式来分1，
+隧道方案 通过隧道, 或者说 overlay network 的方式：
+ Weave，UDP 广播，本机建立新的 BR，通过 PCAP 互通。 Open vSwitch(OVS)，基于 VxLAN 和 GRE 协议，但是性能方面损失比较严重。 Flannel，UDP 广播，VxLan。  隧道方案在 IaaS 层的网络中应用也比较多，大家共识是随着节点规模的增长复杂度会提升， 而且出了网络问题跟踪起来比较麻烦，大规模集群情况下这是需要考虑的一个点。
+路由方案 还有另外一类方式是通过路由来实现，比较典型的代表有：
+ Calico，基于 BGP 协议的路由方案，支持很细致的 ACL 控制，对混合云亲和度比较高。 Macvlan，从逻辑和 Kernel 层来看隔离性和性能最优的方案，基于二层隔离，所以需要二层路由器支持，大多数云服务商不支持，所以混合云上比较难以实现。  路由方案一般是从 3 层或者 2 层实现隔离和跨主机容器互通的，出了问题也很容易排查。
+我觉得 Docker 1.
+  
+
+
+</p>
+
+
+  <div class="container readlink">
+  <a href="https://edgedef.com/2016/06/26/docker-%E7%BD%91%E7%BB%9C%E6%96%B9%E6%A1%88%E5%88%9D%E6%8E%A2/">Read more &rarr;</a>
+
+</div>
+
+
+</article>
+
+  
+  
+
+</section>
+      <footer id="main-footer" class="container main_footer">
+  
+
+  <div class="container nav foot no-print">
+  
+
+  <a class="toplink" href="#">back to top</a>
+
+</div>
+
+  <div class="container credits">
+  
+<div class="container footline">
+  
+  code with <i class='fa fa-heart'></i>
+
+
+</div>
+
+
+  
+<div class="container copyright">
+  
+  &copy; 2018 xychu.
+
+
+</div>
+
+
+</div>
+
+</footer>
+
+    </main>
+    
+
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//ethanchu.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+<script src="https://edgedef.com/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+    
+  </body>
+</html>
+

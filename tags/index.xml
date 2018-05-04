@@ -7,9 +7,91 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>zh-CN</language>
     <copyright>(c) 2018 xychu.</copyright>
+    <lastBuildDate>Sat, 28 Apr 2018 23:00:36 +0800</lastBuildDate>
     
 	<atom:link href="https://edgedef.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Ai</title>
+      <link>https://edgedef.com/tags/ai/</link>
+      <pubDate>Sat, 28 Apr 2018 23:00:36 +0800</pubDate>
+      
+      <guid>https://edgedef.com/tags/ai/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Calico</title>
+      <link>https://edgedef.com/tags/calico/</link>
+      <pubDate>Sat, 10 Dec 2016 17:00:56 +0800</pubDate>
+      
+      <guid>https://edgedef.com/tags/calico/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Deep Learning</title>
+      <link>https://edgedef.com/tags/deep-learning/</link>
+      <pubDate>Sat, 28 Apr 2018 23:00:36 +0800</pubDate>
+      
+      <guid>https://edgedef.com/tags/deep-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Distributed System</title>
+      <link>https://edgedef.com/tags/distributed-system/</link>
+      <pubDate>Sat, 28 Apr 2018 23:00:36 +0800</pubDate>
+      
+      <guid>https://edgedef.com/tags/distributed-system/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Docker</title>
+      <link>https://edgedef.com/tags/docker/</link>
+      <pubDate>Sat, 10 Dec 2016 17:00:56 +0800</pubDate>
+      
+      <guid>https://edgedef.com/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Git</title>
+      <link>https://edgedef.com/tags/git/</link>
+      <pubDate>Sat, 28 Apr 2018 17:00:56 +0800</pubDate>
+      
+      <guid>https://edgedef.com/tags/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Macvlan</title>
+      <link>https://edgedef.com/tags/macvlan/</link>
+      <pubDate>Sat, 10 Dec 2016 17:00:56 +0800</pubDate>
+      
+      <guid>https://edgedef.com/tags/macvlan/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Network</title>
+      <link>https://edgedef.com/tags/network/</link>
+      <pubDate>Sat, 10 Dec 2016 17:00:56 +0800</pubDate>
+      
+      <guid>https://edgedef.com/tags/network/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tenforflow</title>
+      <link>https://edgedef.com/tags/tenforflow/</link>
+      <pubDate>Sat, 28 Apr 2018 23:00:36 +0800</pubDate>
+      
+      <guid>https://edgedef.com/tags/tenforflow/</guid>
+      <description></description>
+    </item>
     
   </channel>
 </rss>

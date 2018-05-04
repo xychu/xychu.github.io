@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Distributed System on Edge Define: To Extend</title>
+    <link>https://edgedef.com/tags/distributed-system/</link>
+    <description>Recent content in Distributed System on Edge Define: To Extend</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>(c) 2018 xychu.</copyright>
+    <lastBuildDate>Sat, 28 Apr 2018 23:00:36 +0800</lastBuildDate>
+    
+	<atom:link href="https://edgedef.com/tags/distributed-system/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Distributed Tensorflow and more</title>
+      <link>https://edgedef.com/2018/04/28/distributed-tensorflow-and-more/</link>
+      <pubDate>Sat, 28 Apr 2018 23:00:36 +0800</pubDate>
+      
+      <guid>https://edgedef.com/2018/04/28/distributed-tensorflow-and-more/</guid>
+      <description>Tensorflow 分布式训练的各种玩儿法 - 蹭 1.8 的热度 Tensorflow 1.8 发布了！ 保持着差不多一个月一个版本，够可以的！ 完整 Release Note 请移步 Github。
+抛开 Tensorflow Lite 不说，我特别关心的是这一条：
+ Can now pass tf.contrib.distribute.MirroredStrategy() to tf.estimator.RunConfig() to run an Estimator model on multiple GPUs on one machine
+ 解读下：TF 高层（high level） API Estimator 通过 MirroredStrategy() 支持单机多卡分布式了（In-graph replication, all-reduce synchronous）。 我们有理由相信，后面应该会有更多的分布式策略被支持，多节点，异步，模型并行等。
+而我们的目标呢，在某些场景下基于目前的机房建设肯定是多机多卡才够劲儿。 所以，今天就简单总结下，我了解的 Tensorflow 分布式训练的各种玩儿法，以及接下来会继续跟进的几个方向。
+1. 经典 ps &amp;amp; worker 模式 假定大家对 Tensorflow 的一些基本概念及架构已经有所了解，在开始介绍经典模式之前， 只简单介绍下分布式涉及到的一些重点概念及策略对比：
+ 模型并行 vs 数据并行
+模型并行：模型的各个部分并行于多个计算设备上；适应场景大模型，单个设备容不下；或者模型本身有比较好的并行性；</description>
+    </item>
+    
+  </channel>
+</rss>

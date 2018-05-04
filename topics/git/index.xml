@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git on Edge Define: To Extend</title>
+    <link>https://edgedef.com/topics/git/</link>
+    <description>Recent content in Git on Edge Define: To Extend</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>(c) 2018 xychu.</copyright>
+    <lastBuildDate>Sat, 28 Apr 2018 17:00:56 +0800</lastBuildDate>
+    
+	<atom:link href="https://edgedef.com/topics/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Git Branching Model</title>
+      <link>https://edgedef.com/2018/04/28/git-branching-model/</link>
+      <pubDate>Sat, 28 Apr 2018 17:00:56 +0800</pubDate>
+      
+      <guid>https://edgedef.com/2018/04/28/git-branching-model/</guid>
+      <description>Git Project branching &amp;amp; releasing model In short, use tag to track every releases and use branch to keep developing parallelized.
+Two main branches During the project development lifecycle, there will be two branches that are almost always there and be used often. Also, they carry all the release tags.
+master( or develop) branch We consider origin/master to be the main branch where the source code of HEAD always reflects a state with the latest delivered development changes for the next release.</description>
+    </item>
+    
+  </channel>
+</rss>
