@@ -19,7 +19,7 @@
 
 <meta property="og:title" content="Distributed Tensorflow and more  &middot; Edge Define: To Extend ">
 <meta property="og:site_name" content="Edge Define: To Extend"/>
-<meta property="og:url" content="http://edgedef.com/2018/04/28/distributed-tensorflow-and-more/" />
+<meta property="og:url" content="https://edgedef.com/2018/04/28/distributed-tensorflow-and-more/" />
 <meta property="og:locale" content="zh-CN">
 
 
@@ -49,10 +49,10 @@
 
 
 
-<link rel="canonical" href="http://edgedef.com/2018/04/28/distributed-tensorflow-and-more/" />
+<link rel="canonical" href="https://edgedef.com/2018/04/28/distributed-tensorflow-and-more/" />
 
-<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://edgedef.com/touch-icon-144-precomposed.png">
-<link href="http://edgedef.com/favicon.png" rel="icon">
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://edgedef.com/touch-icon-144-precomposed.png">
+<link href="https://edgedef.com/favicon.png" rel="icon">
 
 <meta name="generator" content="Hugo 0.40.2" />
 
@@ -63,9 +63,9 @@
 <![endif]-->
 
 <link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" href="http://edgedef.com/css/font-awesome.min.css">
-<link rel="stylesheet" href="http://edgedef.com/css/style.css">
-<link rel="stylesheet" href="http://edgedef.com/css/highlight/default.css">
+<link rel="stylesheet" href="https://edgedef.com/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://edgedef.com/css/style.css">
+<link rel="stylesheet" href="https://edgedef.com/css/highlight/default.css">
 
   
   
@@ -86,7 +86,7 @@
     <header id="main-header" class="container main_header">
   <div class="container brand">
   <div class="container title h1-like">
-  <a class="baselink" href="http://edgedef.com/">
+  <a class="baselink" href="https://edgedef.com/">
   EdgeDef
 
 </a>
@@ -107,15 +107,15 @@
   <nav class="container nav primary no-print">
   
 
-<a class="homelink" href="http://edgedef.com/">首页</a>
+<a class="homelink" href="https://edgedef.com/">首页</a>
 
 
   
-<a href="http://edgedef.com/post" title="Show list of posts">posts</a>
+<a href="https://edgedef.com/post" title="Show list of posts">posts</a>
 
-<a href="http://edgedef.com/tags" title="Show list of tags">tags</a>
+<a href="https://edgedef.com/tags" title="Show list of tags">tags</a>
 
-<a href="http://edgedef.com/topics" title="Show list of topics">topics</a>
+<a href="https://edgedef.com/topics" title="Show list of topics">topics</a>
 
 
 </nav>
@@ -201,7 +201,7 @@ to run an <code>Estimator</code> model on multiple GPUs on one machine</p>
 
 <h2 id="1-经典-ps-worker-模式">1. 经典 ps &amp; worker 模式</h2>
 
-<p><img src="../../images/dist-tf/ps_worker_arch.png" alt="ps_worker_arch" style="width: 1000px;"/></p>
+<p><img src="/images/dist-tf/ps_worker_arch.png" alt="ps_worker_arch" style="width: 1000px;"/></p>
 
 <p>假定大家对 Tensorflow 的一些基本<a href="https://www.tensorflow.org/programmers_guide/low_level_intro">概念</a>及<a href="https://www.tensorflow.org/extend/architecture">架构</a>已经有所了解，在开始介绍经典模式之前，
 只简单介绍下分布式涉及到的一些重点概念及策略对比：</p>
@@ -213,7 +213,7 @@ to run an <code>Estimator</code> model on multiple GPUs on one machine</p>
 
 <p>数据并行：多个模型副本分别处理不同的训练数据，以提高整体吞吐量；是常见的分布式训练策略；</p>
 
-<p><img src="../../images/dist-tf/data_paralle.jpg" alt="data_parallelism" style="width: 600px;"/></p></li>
+<p><img src="/images/dist-tf/data_paralle.jpg" alt="data_parallelism" style="width: 600px;"/></p></li>
 
 <li><p><code>in-graph</code> replication vs <code>between-graph</code> replication</p>
 
@@ -231,7 +231,7 @@ to run an <code>Estimator</code> model on multiple GPUs on one machine</p>
 <p>异步训练：各个 <code>worker</code> 的计算及模型更新都是相互独立的，没有统一控制；
 优势是速度，优化计算资源利用率；劣势是 loss 下降不稳定；</p>
 
-<p><img src="../../images/dist-tf/tf_sync_async.png" alt="sync_vs_async" style="width: 600px;"/></p></li>
+<p><img src="/images/dist-tf/tf_sync_async.png" alt="sync_vs_async" style="width: 600px;"/></p></li>
 </ul>
 
 <p>因为<code>数据同步</code>相比较<code>模型同步</code>具有更普适的应用场景，所以针对<code>数据同步</code>的分布式训练的支持也就更适合作为 Tensorflow 通用特性来在框架级支持。</p>
@@ -285,7 +285,7 @@ to run an <code>Estimator</code> model on multiple GPUs on one machine</p>
 
 <p>参考： <a href="https://arxiv.org/pdf/1708.02637.pdf">Tensorflow Estimator 2017</a> 及 <a href="https://medium.com/onfido-tech/higher-level-apis-in-tensorflow-67bfb602e6c0">https://medium.com/onfido-tech/higher-level-apis-in-tensorflow-67bfb602e6c0</a></p>
 
-<p><img src="../../images/dist-tf/estimator_stack.png" alt="estimator_stack" style="width: 600px;"/></p>
+<p><img src="/images/dist-tf/estimator_stack.png" alt="estimator_stack" style="width: 600px;"/></p>
 
 <blockquote>
 <p>注： <code>Experiment</code> 已经废弃了， 具体参考： <a href="https://github.com/tensorflow/tensorflow/tree/r1.8/tensorflow/contrib/learn#experiment-class---distributed-training-tooling">Github 文档</a>。</p>
@@ -297,7 +297,7 @@ to run an <code>Estimator</code> model on multiple GPUs on one machine</p>
 </blockquote>
 
 <p><code>Estimator</code> 代表一个完整的模型。Estimator API 提供的方法包括模型的训练、评估、预测及导出。
-<img src="../../images/dist-tf/estimator_interface.png" alt="estimator_interface" style="width: 800px;"/></p>
+<img src="/images/dist-tf/estimator_interface.png" alt="estimator_interface" style="width: 800px;"/></p>
 
 <blockquote>
 <p><code>Estimator</code> 具有下列优势：</p>
@@ -382,7 +382,7 @@ TF_CONFIG='{
 
 <p>参考：<a href="https://zhuanlan.zhihu.com/p/34172340" title="【第一期】AI Talk：TensorFlow 分布式训练的线性加速实践">【第一期】AI Talk：TensorFlow 分布式训练的线性加速实践</a></p>
 
-<p><img src="../../images/dist-tf/ring_allreduce.png" alt="ring_allreduce" style="width: 800px;"/></p>
+<p><img src="/images/dist-tf/ring_allreduce.png" alt="ring_allreduce" style="width: 800px;"/></p>
 
 <p>无论是经典 ps &amp; worker 模式，还是 High Level 的 <code>Estimator</code> API，在训练集群规模和模型较大时，
 集中式的参数同步都会造成网络瓶颈。</p>
@@ -392,9 +392,9 @@ TF_CONFIG='{
 <p>引入 Ring Allreduce 之后的拓扑变化如下：</p>
 
 <p style="width: 1000px;">
-<img src="../../images/dist-tf/ps_worker_top.jpg" alt="ps_worker_top" style="width: 450px;"/>
+<img src="/images/dist-tf/ps_worker_top.jpg" alt="ps_worker_top" style="width: 450px;"/>
 &rarr;
-<img src="../../images/dist-tf/ring_top.jpg" alt="ring_top" style="width: 450px;"/>
+<img src="/images/dist-tf/ring_top.jpg" alt="ring_top" style="width: 450px;"/>
 </p>
 
 <h3 id="参数更新步骤">参数更新步骤</h3>
@@ -428,8 +428,8 @@ TF_CONFIG='{
 例如，第一轮迭代，第 n 个 GPU 会发送第 n 号数据块，并接收第 n-1 号数据块。经过 n-1 轮迭代，梯度数据会像图2 所示，
 每个 GPU 都包含了部分完整梯度信息。</p>
 
-<p><img src="../../images/dist-tf/scatter_reduce_1.jpg" alt="ring_top" style="width: 600px;"/>
-<img src="../../images/dist-tf/scatter_reduce_2.jpg" alt="ring_top" style="width: 600px;"/></p>
+<p><img src="/images/dist-tf/scatter_reduce_1.jpg" alt="ring_top" style="width: 600px;"/>
+<img src="/images/dist-tf/scatter_reduce_2.jpg" alt="ring_top" style="width: 600px;"/></p>
 </blockquote>
 
 <h4 id="allgather">Allgather</h4>
@@ -437,8 +437,8 @@ TF_CONFIG='{
 <blockquote>
 <p>和 Scatter Reduce 阶段类似，只不过这里只拷贝不求和，最终每个GPU 都得到了所有融合后的梯度。</p>
 
-<p><img src="../../images/dist-tf/allgather_1.jpg" alt="allgather_1" style="width: 600px;"/>
-<img src="../../images/dist-tf/allgather_2.jpg" alt="allgather_2" style="width: 600px;"/></p>
+<p><img src="/images/dist-tf/allgather_1.jpg" alt="allgather_1" style="width: 600px;"/>
+<img src="/images/dist-tf/allgather_2.jpg" alt="allgather_2" style="width: 600px;"/></p>
 </blockquote>
 
 <h4 id="这么做有什么好处呢">这么做有什么好处呢？</h4>
@@ -462,7 +462,7 @@ TF_CONFIG='{
 
 <p>对于多机多卡， 来自 Uber 的开源项目 <a href="https://github.com/uber/horovod">Horovod</a> 就是一个不错的选择。</p>
 
-<p><img src="../../images/dist-tf/horovod_benchmark.png" alt="horovod_benchmark" style="width: 800px;"/></p>
+<p><img src="/images/dist-tf/horovod_benchmark.png" alt="horovod_benchmark" style="width: 800px;"/></p>
 
 <h2 id="总结">总结</h2>
 
@@ -508,7 +508,7 @@ TF_CONFIG='{
   
 
     
-    <a class="prev" href="http://edgedef.com/2018/04/28/git-branching-model/" title="Git Branching Model">
+    <a class="prev" href="https://edgedef.com/2018/04/28/git-branching-model/" title="Git Branching Model">
       Previous
     </a>
     
@@ -595,7 +595,7 @@ TF_CONFIG='{
 
 
 
-<script src="http://edgedef.com/js/highlight.pack.js"></script>
+<script src="https://edgedef.com/js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
 
