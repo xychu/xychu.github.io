@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Distributed Tensorflow and more  &middot; Edge Define: To Extend</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="" />
+
+<meta name="keywords" content="">
+
+
+<meta property="og:title" content="Distributed Tensorflow and more  &middot; Edge Define: To Extend ">
+<meta property="og:site_name" content="Edge Define: To Extend"/>
+<meta property="og:url" content="http://edgedef.com/2018/04/28/distributed-tensorflow-and-more/" />
+<meta property="og:locale" content="zh-CN">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content=""/>
+<meta property="og:article:published_time" content="2018-04-28T23:00:36&#43;08:00" />
+<meta property="og:article:modified_time" content="2018-04-28T23:00:36&#43;08:00" />
+
+  
+
+  
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Distributed Tensorflow and more",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2018-04-28",
+    "description": "",
+    "wordCount": 717
+  }
+</script>
+
+
+
+<link rel="canonical" href="http://edgedef.com/2018/04/28/distributed-tensorflow-and-more/" />
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://edgedef.com/touch-icon-144-precomposed.png">
+<link href="http://edgedef.com/favicon.png" rel="icon">
+
+<meta name="generator" content="Hugo 0.40.2" />
+
+  
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="http://edgedef.com/css/font-awesome.min.css">
+<link rel="stylesheet" href="http://edgedef.com/css/style.css">
+<link rel="stylesheet" href="http://edgedef.com/css/highlight/default.css">
+
+  
+  
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-42668868-2', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+
+</head>
+<body>
+  <main id="main-wrapper" class="container main_wrapper has-sidebar">
+    <header id="main-header" class="container main_header">
+  <div class="container brand">
+  <div class="container title h1-like">
+  <a class="baselink" href="http://edgedef.com/">
+  EdgeDef
+
+</a>
+
+</div>
+
+  
+<div class="container topline">
+  
+  Do What You Can&rsquo;t
+
+
+</div>
+
+
+</div>
+
+  <nav class="container nav primary no-print">
+  
+
+<a class="homelink" href="http://edgedef.com/">首页</a>
+
+
+  
+<a href="http://edgedef.com/post" title="Show list of posts">posts</a>
+
+<a href="http://edgedef.com/tags" title="Show list of tags">tags</a>
+
+<a href="http://edgedef.com/topics" title="Show list of topics">topics</a>
+
+
+</nav>
+
+<div class="container nav secondary no-print">
+  
+
+
+<a id="contact-link-github" class="contact_link" href="https://github.com/xychu">
+  <span class="fa fa-github-square"></span><span>github</span></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+  
+
+</header>
+
+
+<article id="main-content" class="container main_content single">
+  <header class="container hat">
+  <h1>Distributed Tensorflow and more
+</h1>
+
+  <div class="metas">
+<time datetime="2018-04-28">28 Apr, 2018</time>
+
+
+  
+  &middot; Read in about 4 min
+  &middot; (717 Words)
+  <br>
+  
+
+
+</div>
+
+</header>
+
+  <div class="container content">
+  
+
+<h1 id="tensorflow-分布式训练的各种玩儿法-蹭-1-8-的热度">Tensorflow 分布式训练的各种玩儿法 - 蹭 1.8 的热度</h1>
+
+<p>Tensorflow 1.8 发布了！ 保持着差不多一个月一个版本，够可以的！
+完整 Release Note 请移步 <a href="https://github.com/tensorflow/tensorflow/releases/tag/v1.8.0">Github</a>。</p>
+
+<p>抛开 Tensorflow Lite 不说，我特别关心的是这一条：</p>
+
+<blockquote>
+<p>Can now pass <code>tf.contrib.distribute.MirroredStrategy()</code> to <code>tf.estimator.RunConfig()</code>
+to run an <code>Estimator</code> model on multiple GPUs on one machine</p>
+</blockquote>
+
+<p>解读下：TF 高层（high level） API <code>Estimator</code> 通过 <code>MirroredStrategy()</code>
+支持单机多卡分布式了（In-graph replication, all-reduce synchronous）。
+我们有理由相信，后面应该会有更多的分布式策略被支持，多节点，异步，模型并行等。</p>
+
+<p>而我们的目标呢，在某些场景下基于目前的机房建设肯定是多机多卡才够劲儿。
+所以，今天就简单总结下，我了解的 Tensorflow 分布式训练的各种玩儿法，以及接下来会继续跟进的几个方向。</p>
+
+<h2 id="1-经典-ps-worker-模式">1. 经典 ps &amp; worker 模式</h2>
+
+<p><img src="../../images/dist-tf/ps_worker_arch.png" alt="ps_worker_arch" style="width: 1000px;"/></p>
+
+<p>假定大家对 Tensorflow 的一些基本<a href="https://www.tensorflow.org/programmers_guide/low_level_intro">概念</a>及<a href="https://www.tensorflow.org/extend/architecture">架构</a>已经有所了解，在开始介绍经典模式之前，
+只简单介绍下分布式涉及到的一些重点概念及策略对比：</p>
+
+<ul>
+<li><p>模型并行 vs 数据并行</p>
+
+<p>模型并行：模型的各个部分并行于多个计算设备上；适应场景大模型，单个设备容不下；或者模型本身有比较好的并行性；</p>
+
+<p>数据并行：多个模型副本分别处理不同的训练数据，以提高整体吞吐量；是常见的分布式训练策略；</p>
+
+<p><img src="../../images/dist-tf/data_paralle.jpg" alt="data_parallelism" style="width: 600px;"/></p></li>
+
+<li><p><code>in-graph</code> replication vs <code>between-graph</code> replication</p>
+
+<p><code>in-graph</code>: 图内复制，只构建一个 client 并把包含所有的 <code>worker</code> 设备都在定义一个图中，
+如果 worker 节点及设备过多，计算图过大会导致性能下降；而且只构建一个 client，数据分发的效率以及整体容错性都不好；</p>
+
+<p><code>between-graph</code>: 图间复制，每个 <code>worker</code> 都初始化一个计算图副本， 通过 <code>ps</code>( parameter server)
+共享变量参数，只需要更新参数，免除了数据分发环节，在规模较大的情况下，相比 <code>in-graph</code> 提高了训练并行效率和容错性；</p></li>
+
+<li><p>同步训练 vs 异步训练</p>
+
+<p>同步训练：每一次梯度更新，需要等所有的 <code>worker</code> 处理完待训练数据，先做聚会处理后再更新参数；
+优势是 loss 下降稳定；劣势是每一步的处理速度都取决于最慢的那个 <code>worker</code>；</p>
+
+<p>异步训练：各个 <code>worker</code> 的计算及模型更新都是相互独立的，没有统一控制；
+优势是速度，优化计算资源利用率；劣势是 loss 下降不稳定；</p>
+
+<p><img src="../../images/dist-tf/tf_sync_async.png" alt="sync_vs_async" style="width: 600px;"/></p></li>
+</ul>
+
+<p>因为<code>数据同步</code>相比较<code>模型同步</code>具有更普适的应用场景，所以针对<code>数据同步</code>的分布式训练的支持也就更适合作为 Tensorflow 通用特性来在框架级支持。</p>
+
+<p>而源于 <code>DistBelief</code> 的基于 <code>ps</code> 和 <code>worker</code> 分布式训练架构在 Tensorflow 很早的版本中便提供了支持，这也就是这里称之为 <code>经典</code> 模式的原因。</p>
+
+<p>在 Tensorflow 的 <code>ps</code> 和 <code>worker</code> 模式下，<code>in-graph</code> 和 <code>between-graph</code> replication 都有支持，但是基于性能和实用性考虑，可能 <code>between-graph</code> 使用的更多一些，<code>同步</code>和<code>异步</code>则更多的是根据模型的实际效果以及项目的具体需求来选择。</p>
+
+<h3 id="集群描述-tf-train-clusterspec">集群描述 <code>tf.train.ClusterSpec</code></h3>
+
+<p>参考：<a href="https://www.tensorflow.org/deploy/distributed">Distributed Tensorflow</a></p>
+
+<pre><code class="language-python">tf.train.ClusterSpec({
+    &quot;worker&quot;: [
+        &quot;worker0.example.com:2222&quot;,
+        &quot;worker1.example.com:2222&quot;,
+        &quot;worker2.example.com:2222&quot;
+    ],
+    &quot;ps&quot;: [
+        &quot;ps0.example.com:2222&quot;,
+        &quot;ps1.example.com:2222&quot;
+    ]})
+
+# 其中， &quot;ps&quot; 及 &quot;worker&quot; 为 `job_name`, 还需要 `task_index` 来创建具体的 `tf.train.Server` 实例。
+</code></pre>
+
+<p><strong>注：</strong> 可以通过脚本或者借助调度框架来动态构建 <code>ClusterSpec</code>。</p>
+
+<h3 id="server-通讯协议-protocol">Server 通讯协议（protocol）</h3>
+
+<ul>
+<li>Default <code>grpc</code></li>
+<li>Verbs based RDMA with <code>grpc+verbs</code>: <a href="https://github.com/tensorflow/tensorflow/tree/v1.8.0/tensorflow/contrib/verbs">https://github.com/tensorflow/tensorflow/tree/v1.8.0/tensorflow/contrib/verbs</a></li>
+<li>MPI with <code>grpc+mpi</code>: <a href="https://github.com/tensorflow/tensorflow/tree/v1.8.0/tensorflow/contrib/mpi">https://github.com/tensorflow/tensorflow/tree/v1.8.0/tensorflow/contrib/mpi</a></li>
+<li>GPU Direct RDMA with <code>grpc+gdr</code>: <a href="https://github.com/tensorflow/tensorflow/tree/v1.8.0/tensorflow/contrib/gdr">https://github.com/tensorflow/tensorflow/tree/v1.8.0/tensorflow/contrib/gdr</a></li>
+</ul>
+
+<pre><code class="language-python">server = tf.train.Server(cluster, job_name=&quot;local&quot;, task_index=0, protocol='grpc+gdr') # default protocol is 'grpc'
+</code></pre>
+
+<h3 id="实践中需要留意的点">实践中需要留意的点</h3>
+
+<ul>
+<li>同步还是异步的选择</li>
+<li><code>ps</code> 和 <code>worker</code> 的个数比率的调整</li>
+<li><code>ps</code> 带宽占用过高时，<code>ps</code> 及 <code>worker</code> 的调度策略</li>
+<li>分布式训练的状态机定义，包括终止态定义，以及当有 <code>worker</code> 训练失败后，是否支持重启训练等</li>
+</ul>
+
+<h2 id="2-高层-api-estimator-和-dataset">2. 高层 API (<code>Estimator</code> 和 <code>Dataset</code>)</h2>
+
+<p>参考： <a href="https://arxiv.org/pdf/1708.02637.pdf">Tensorflow Estimator 2017</a> 及 <a href="https://medium.com/onfido-tech/higher-level-apis-in-tensorflow-67bfb602e6c0">https://medium.com/onfido-tech/higher-level-apis-in-tensorflow-67bfb602e6c0</a></p>
+
+<p><img src="../../images/dist-tf/estimator_stack.png" alt="estimator_stack" style="width: 600px;"/></p>
+
+<blockquote>
+<p>注： <code>Experiment</code> 已经废弃了， 具体参考： <a href="https://github.com/tensorflow/tensorflow/tree/r1.8/tensorflow/contrib/learn#experiment-class---distributed-training-tooling">Github 文档</a>。</p>
+
+<ul>
+<li>Remove the <code>experiment_fn</code>. Instead, create the <code>Estimator</code>,
+<code>train_spec</code> and <code>eval_spec</code>, then call <code>tf.estimator.train_and_evaluate</code> directly.</li>
+</ul>
+</blockquote>
+
+<p><code>Estimator</code> 代表一个完整的模型。Estimator API 提供的方法包括模型的训练、评估、预测及导出。
+<img src="../../images/dist-tf/estimator_interface.png" alt="estimator_interface" style="width: 800px;"/></p>
+
+<blockquote>
+<p><code>Estimator</code> 具有下列优势：</p>
+
+<ul>
+<li>您可以在本地主机上或分布式多服务器环境中运行基于 <code>Estimator</code> 的模型，而无需更改模型。此外，您可以在 CPU、GPU 或 TPU 上运行基于 Estimator 的模型，而无需重新编码模型。</li>
+<li><code>Estimator</code> 简化了在模型开发者之间共享实现的过程。</li>
+<li>您可以使用高级直观代码开发先进的模型。简言之，采用 <code>Estimator</code> 创建模型通常比采用低阶 TensorFlow API 更简单。</li>
+<li><code>Estimator</code> 本身在 <code>tf.layers</code> 之上构建而成，可以简化自定义过程。</li>
+<li><code>Estimator</code> 会为您构建图。也就是说，您不必构建图。</li>
+<li><code>Estimator</code> 提供安全的分布式训练循环，可以控制如何以及何时：
+
+<ul>
+<li>构建图</li>
+<li>初始化变量</li>
+<li>开始排队</li>
+<li>处理异常</li>
+<li>创建检查点文件并从故障中恢复</li>
+<li>保存 TensorBoard 的摘要</li>
+</ul></li>
+</ul>
+
+<p>使用 <code>Estimator</code> 编写应用时，您必须将数据输入管道从模型中分离出来。这种分离简化了实验不同数据集的流程。</p>
+</blockquote>
+
+<p>更多细节： <a href="https://www.tensorflow.org/programmers_guide/estimators">https://www.tensorflow.org/programmers_guide/estimators</a></p>
+
+<p><code>Dataset</code> 是训练数据的抽象，通过 <code>tf.data</code> 下的 API 可以构建数据 pipeline，轻松处理大量数据、不同的数据格式以及复杂的转换。</p>
+
+<ul>
+<li><code>class Dataset</code>: Represents a potentially large set of elements.</li>
+<li><code>class FixedLengthRecordDataset</code>: A <code>Dataset</code> of fixed-length records from one or more binary files.</li>
+<li><code>class Iterator</code>: Represents the state of iterating through a <code>Dataset</code>.</li>
+<li><code>class TFRecordDataset</code>: A <code>Dataset</code> comprising records from one or more TFRecord files.</li>
+<li><code>class TextLineDataset</code>: A <code>Dataset</code> comprising lines from one or more text files.</li>
+</ul>
+
+<p>更多细节： <a href="https://www.tensorflow.org/programmers_guide/datasets">https://www.tensorflow.org/programmers_guide/datasets</a></p>
+
+<h3 id="集群描述-tf-config-环境变量">集群描述 <code>TF_CONFIG</code> 环境变量</h3>
+
+<p>参考：<a href="https://www.tensorflow.org/api_docs/python/tf/estimator/train_and_evaluate"><code>tf.estimator.train_and_evaluate</code> with <code>Estimator</code></a></p>
+
+<p>chief worker（必须有且只有一个）:</p>
+
+<pre><code class="language-python"># This should be a JSON string, which is set as environment variable. Usually
+# the cluster manager handles that.
+TF_CONFIG='{
+    &quot;cluster&quot;: {
+        &quot;chief&quot;: [&quot;host0:2222&quot;],
+        &quot;worker&quot;: [&quot;host1:2222&quot;, &quot;host2:2222&quot;, &quot;host3:2222&quot;],
+        &quot;ps&quot;: [&quot;host4:2222&quot;, &quot;host5:2222&quot;]
+    },
+    &quot;task&quot;: {&quot;type&quot;: &quot;chief&quot;, &quot;index&quot;: 0}
+}'
+</code></pre>
+
+<p>evaluator task（只有一个）:</p>
+
+<pre><code class="language-python"># This should be a JSON string, which is set as environment variable. Usually
+# the cluster manager handles that.
+TF_CONFIG='{
+    &quot;cluster&quot;: {
+        &quot;chief&quot;: [&quot;host0:2222&quot;],
+        &quot;worker&quot;: [&quot;host1:2222&quot;, &quot;host2:2222&quot;, &quot;host3:2222&quot;],
+        &quot;ps&quot;: [&quot;host4:2222&quot;, &quot;host5:2222&quot;]
+    },
+    &quot;task&quot;: {&quot;type&quot;: &quot;chief&quot;, &quot;index&quot;: 0}
+}'
+</code></pre>
+
+<p><strong>注：</strong> 可以通过脚本或者借助调度框架来设置 <code>TF_CONFIG</code> 。</p>
+
+<h3 id="实践中需要留意的点-1">实践中需要留意的点</h3>
+
+<ul>
+<li><code>Dataset</code> 性能： <a href="https://www.tensorflow.org/versions/master/performance/datasets_performance">https://www.tensorflow.org/versions/master/performance/datasets_performance</a></li>
+<li>自定义 <code>Estimator</code>: <a href="https://www.tensorflow.org/get_started/custom_estimators">https://www.tensorflow.org/get_started/custom_estimators</a></li>
+</ul>
+
+<h2 id="3-ring-allreduce">3. Ring Allreduce</h2>
+
+<p>参考：<a href="https://zhuanlan.zhihu.com/p/34172340" title="【第一期】AI Talk：TensorFlow 分布式训练的线性加速实践">【第一期】AI Talk：TensorFlow 分布式训练的线性加速实践</a></p>
+
+<p><img src="../../images/dist-tf/ring_allreduce.png" alt="ring_allreduce" style="width: 800px;"/></p>
+
+<p>无论是经典 ps &amp; worker 模式，还是 High Level 的 <code>Estimator</code> API，在训练集群规模和模型较大时，
+集中式的参数同步都会造成网络瓶颈。</p>
+
+<p>好在 Baidu SVAIL 已经将 HPC 领域一种比较成熟的通信算法 Ring Allreduce 引入到 Deep Learning 训练框架中。</p>
+
+<p>引入 Ring Allreduce 之后的拓扑变化如下：</p>
+
+<p style="width: 1000px;">
+<img src="../../images/dist-tf/ps_worker_top.jpg" alt="ps_worker_top" style="width: 450px;"/>
+&rarr;
+<img src="../../images/dist-tf/ring_top.jpg" alt="ring_top" style="width: 450px;"/>
+</p>
+
+<h3 id="参数更新步骤">参数更新步骤</h3>
+
+<ol>
+<li>生产或者定义集群的拓扑结构</li>
+</ol>
+
+<ul>
+<li>GPU 集群被组织成一个逻辑环</li>
+<li>每个 GPU 有一个左邻居、一个右邻居</li>
+<li>每个 GPU 只从左邻居接受数据、并发送数据给右邻居</li>
+</ul>
+
+<ol>
+<li>梯度融合</li>
+</ol>
+
+<ul>
+<li><p>Scatter Reduce：在这个 Scatter Reduce阶段，GPU 会逐步交换彼此的梯度并融合，最后每个 GPU 都会包含完整融合梯度的一部分</p></li>
+
+<li><p>Allgather：GPU 会逐步交换彼此不完整的融合梯度，最后所有 GPU 都会得到完整的融合梯度</p></li>
+</ul>
+
+<h4 id="scatter-reduce">Scatter Reduce</h4>
+
+<blockquote>
+<p>为了方便说明，我们用梯度加和代替梯度融合。假设集群中有 N 个 GPU，那么将梯度数据等分为N 份，
+接下来将在 GPUs 间进行 N-1 次 Scatter Reduce迭代，在每一次迭代中，每个 GPU 都会发送所有梯度数据的 1/N 给右邻居，
+并从左邻居接收所有梯度数据的 1/N 。同一次 Scatter Reduce 迭代中，发送和接收的数据块的编号是不同的，
+例如，第一轮迭代，第 n 个 GPU 会发送第 n 号数据块，并接收第 n-1 号数据块。经过 n-1 轮迭代，梯度数据会像图2 所示，
+每个 GPU 都包含了部分完整梯度信息。</p>
+
+<p><img src="../../images/dist-tf/scatter_reduce_1.jpg" alt="ring_top" style="width: 600px;"/>
+<img src="../../images/dist-tf/scatter_reduce_2.jpg" alt="ring_top" style="width: 600px;"/></p>
+</blockquote>
+
+<h4 id="allgather">Allgather</h4>
+
+<blockquote>
+<p>和 Scatter Reduce 阶段类似，只不过这里只拷贝不求和，最终每个GPU 都得到了所有融合后的梯度。</p>
+
+<p><img src="../../images/dist-tf/allgather_1.jpg" alt="allgather_1" style="width: 600px;"/>
+<img src="../../images/dist-tf/allgather_2.jpg" alt="allgather_2" style="width: 600px;"/></p>
+</blockquote>
+
+<h4 id="这么做有什么好处呢">这么做有什么好处呢？</h4>
+
+<blockquote>
+<p>下面我们来定量的分析一下，每个 GPU 在Scatter Reduce 阶段，接收 N-1 次数据，N 是 GPU 数量；
+每个 GPU 在allgather  阶段，接收 N-1 次 数据；每个 GPU 每次发送 K/N  大小数据块，K 是总数据大小；
+所以，Data Transferred=2(N−1)*K/N = (2(N−1)/N)*K，随着 GPU 数量 N 增加，总传输量恒定！
+总传输量恒定意味着通信成本不随 GPU 数量增长而增长，也就是说我们系统拥有理论上的线性加速能力。
+再回到 DS2 的例子，300million 参数也就是 1.2Gb 数据量，Ring Allreduce 方式更新一次需要传送并接收 2.4Gb 数据，
+假设网络使用 GPUDirect RDMA + InfiniBand，GPUDirect RDMA 带宽约为10Gb/s；InfiniBand 带宽约为 6Gb/s，
+所以通信瓶颈在 InfiniBand 。(2.4Gb)/(6.0Gb/s) ≈ 400ms，也就是每轮迭代需要 400 ms 做参数同步，
+这 400ms 的数据传输时间是恒定的，不随 GPU 数量增加而增加。</p>
+</blockquote>
+
+<p>划重点： <strong>随着设备数量 N 增加，总传输量恒定</strong></p>
+
+<h3 id="tensorflow-allreduce-实践">Tensorflow allreduce 实践</h3>
+
+<p>Tensorflow 1.8 的 Release Note 说到了，单机多卡的 allreduce 可以通过 <code>Estimator</code> + <code>tf.contrib.distribute.MirroredStrategy()</code> 实现；</p>
+
+<p>对于多机多卡， 来自 Uber 的开源项目 <a href="https://github.com/uber/horovod">Horovod</a> 就是一个不错的选择。</p>
+
+<p><img src="../../images/dist-tf/horovod_benchmark.png" alt="horovod_benchmark" style="width: 800px;"/></p>
+
+<h2 id="总结">总结</h2>
+
+<p>通过从经典 <code>ps</code> <code>worker</code> 模式到 <code>Estimator</code> API 封装，再到更高效的 <code>Ring Allreduce</code> 的引入，
+可以看出随着 Deep Learning 需求的激增，训练框架也被朝着更快更强和更易用的方向推进。
+分布式训练在大规模机器学习中是最耗时间和计算资源的哪一环，如何能有效的提高分布式训练的效率，
+一定是各框架和 AI 平台提供方大家集中发力的一个点。</p>
+
+<p>Ring Allreduce 只是优化分布式训练中参数同步的一个方向，通过 Horovod 的推出，我们也确实看到了几乎逼近理想的线性扩展能力，
+但其实深度学习是个整体工程，一定还有其他更多方面等着大家去不断的优化。</p>
+
+<p>基于容器支撑深度学习 AI 平台，可以有效的发挥容器更轻量的优势，而且镜像封装各个框架及运行环境也可以降低上手门槛，再加上像 Kubernetes
+这样的容器调度平台，在提高计算资源的整合能力的同时保证整体使用率。</p>
+
+<p><a href="https://github.com/kubeflow/kubeflow">kubeflow</a> 就是一个整合了基于 Kubernetes 生态圈的机器学习工具箱，
+虽然目前还不算成熟，但还是朝着很不错的方向在前进，包括 tf-operator 的升级，更多框架的支持，更好的存储接入，引入工作流引擎等，
+都是很有吸引力的尝试。</p>
+
+<p>后面我会继续跟进 kubeflow，希望能有更多有意思的东西总结出来。</p>
+
+<p>限于个人能力，这里只是简单“堆叠”了我学习 Tensorflow 分布式训练过程中的找到的一些资料和说明，如有错误，还望指出。</p>
+
+<h2 id="refs">Refs:</h2>
+
+<ul>
+<li><a href="https://zhuanlan.zhihu.com/p/35083779">https://zhuanlan.zhihu.com/p/35083779</a> &laquo;分布式 TensorFlow 入门教程&raquo;</li>
+<li><a href="https://zhuanlan.zhihu.com/p/34172340">https://zhuanlan.zhihu.com/p/34172340</a> &laquo;【第一期】AI Talk：TensorFlow 分布式训练的线性加速实践&raquo;</li>
+<li><a href="https://www.oreilly.com/ideas/distributed-tensorflow">https://www.oreilly.com/ideas/distributed-tensorflow</a></li>
+<li><a href="http://download.tensorflow.org/paper/whitepaper2015.pdf">http://download.tensorflow.org/paper/whitepaper2015.pdf</a></li>
+<li><a href="https://www.usenix.org/system/files/conference/osdi16/osdi16-abadi.pdf">https://www.usenix.org/system/files/conference/osdi16/osdi16-abadi.pdf</a></li>
+<li><a href="https://arxiv.org/pdf/1708.02637.pdf">https://arxiv.org/pdf/1708.02637.pdf</a></li>
+<li><a href="https://eng.uber.com/horovod/">https://eng.uber.com/horovod/</a>  &laquo;Meet Horovod: Uber’s Open Source Distributed Deep Learning Framework for TensorFlow&raquo;</li>
+<li><a href="https://medium.com/onfido-tech/higher-level-apis-in-tensorflow-67bfb602e6c0">https://medium.com/onfido-tech/higher-level-apis-in-tensorflow-67bfb602e6c0</a> &laquo;Higher-Level APIs in TensorFlow&raquo;</li>
+</ul>
+
+</div>
+
+
+  <footer class="container">
+  <div class="container navigation no-print">
+  <h2>Navigation</h2>
+  
+  
+
+    
+    <a class="prev" href="http://edgedef.com/2018/04/28/git-branching-model/" title="Git Branching Model">
+      Previous
+    </a>
+    
+
+    
+
+  
+
+
+</div>
+
+  <div class="container comments">
+  <h2>Comments</h2>
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//ethanchu.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+</article>
+      <footer id="main-footer" class="container main_footer">
+  
+
+  <div class="container nav foot no-print">
+  
+
+  <a class="toplink" href="#">back to top</a>
+
+</div>
+
+  <div class="container credits">
+  
+<div class="container footline">
+  
+  code with <i class='fa fa-heart'></i>
+
+
+</div>
+
+
+  
+<div class="container copyright">
+  
+  &copy; 2018 xychu.
+
+
+</div>
+
+
+</div>
+
+</footer>
+
+    </main>
+    
+
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//ethanchu.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+<script src="http://edgedef.com/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+    
+  </body>
+</html>
+

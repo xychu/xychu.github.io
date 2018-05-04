@@ -5,7 +5,7 @@
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
   <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <title>Edge Define: To Extend </title>
+  <title>Posts  &middot; Edge Define: To Extend</title>
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="HandheldFriendly" content="True">
 <meta name="MobileOptimized" content="320">
@@ -17,9 +17,9 @@
 <meta name="keywords" content="">
 
 
-<meta property="og:title" content="Edge Define: To Extend ">
+<meta property="og:title" content="Posts  &middot; Edge Define: To Extend ">
 <meta property="og:site_name" content="Edge Define: To Extend"/>
-<meta property="og:url" content="http://edgedef.com/" />
+<meta property="og:url" content="http://edgedef.com/post/" />
 <meta property="og:locale" content="zh-CN">
 
 
@@ -27,9 +27,9 @@
 
 
 
-<link href="http://edgedef.com/index.xml" rel="alternate" type="application/rss+xml" title="Edge Define: To Extend" />
+<link href="http://edgedef.com/post/index.xml" rel="alternate" type="application/rss+xml" title="Posts" />
 
-<link rel="canonical" href="http://edgedef.com/" />
+<link rel="canonical" href="http://edgedef.com/post/" />
 
 <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://edgedef.com/touch-icon-144-precomposed.png">
 <link href="http://edgedef.com/favicon.png" rel="icon">
@@ -137,19 +137,14 @@
 </header>
 
 
-<section id="main-content" class="container main_content homepage">
-  <header class="container header">
-    <h1>Edge Define: To Extend
+<section id="main-content" class="container main_content section">
+  <header class="container">
+    <h1>Posts
 </h1>
-
-    <span>last update: <time datetime="2018-04-28T23:00:36&#43;08:00">28 April at 11:00pm</time>
-</span>
 
   </header>
   
-  
-    <article class="container content summary">
-  <div class="container hat">
+    <div class="container hat">
   <h2><a href="http://edgedef.com/2018/04/28/distributed-tensorflow-and-more/">Distributed Tensorflow and more
 </a>
 </h2>
@@ -158,34 +153,9 @@
 
 </div>
 
-  <p class="container content">
-  
-  
-    Tensorflow 分布式训练的各种玩儿法 - 蹭 1.8 的热度 Tensorflow 1.8 发布了！ 保持着差不多一个月一个版本，够可以的！ 完整 Release Note 请移步 Github。
-抛开 Tensorflow Lite 不说，我特别关心的是这一条：
- Can now pass tf.contrib.distribute.MirroredStrategy() to tf.estimator.RunConfig() to run an Estimator model on multiple GPUs on one machine
- 解读下：TF 高层（high level） API Estimator 通过 MirroredStrategy() 支持单机多卡分布式了（In-graph replication, all-reduce synchronous）。 我们有理由相信，后面应该会有更多的分布式策略被支持，多节点，异步，模型并行等。
-而我们的目标呢，在某些场景下基于目前的机房建设肯定是多机多卡才够劲儿。 所以，今天就简单总结下，我了解的 Tensorflow 分布式训练的各种玩儿法，以及接下来会继续跟进的几个方向。
-1. 经典 ps &amp; worker 模式 假定大家对 Tensorflow 的一些基本概念及架构已经有所了解，在开始介绍经典模式之前， 只简单介绍下分布式涉及到的一些重点概念及策略对比：
- 模型并行 vs 数据并行
-模型并行：模型的各个部分并行于多个计算设备上；适应场景大模型，单个设备容不下；或者模型本身有比较好的并行性；
-  
-
-
-</p>
-
-
-  <div class="container readlink">
-  <a href="http://edgedef.com/2018/04/28/distributed-tensorflow-and-more/">Read more &rarr;</a>
-
-</div>
-
-
-</article>
 
   
-    <article class="container content summary">
-  <div class="container hat">
+    <div class="container hat">
   <h2><a href="http://edgedef.com/2018/04/28/git-branching-model/">Git Branching Model
 </a>
 </h2>
@@ -194,31 +164,11 @@
 
 </div>
 
-  <p class="container content">
-  
-  
-    Git Project branching &amp; releasing model In short, use tag to track every releases and use branch to keep developing parallelized.
-Two main branches During the project development lifecycle, there will be two branches that are almost always there and be used often. Also, they carry all the release tags.
-master( or develop) branch We consider origin/master to be the main branch where the source code of HEAD always reflects a state with the latest delivered development changes for the next release.
-  
-
-
-</p>
-
-
-  <div class="container readlink">
-  <a href="http://edgedef.com/2018/04/28/git-branching-model/">Read more &rarr;</a>
-
-</div>
-
-
-</article>
 
   
   
 
 </section>
-
       <footer id="main-footer" class="container main_footer">
   
 
