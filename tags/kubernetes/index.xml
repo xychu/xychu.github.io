@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kubernetes on Edge Define: To Extend</title>
+    <link>https://edgedef.com/tags/kubernetes/</link>
+    <description>Recent content in Kubernetes on Edge Define: To Extend</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>zh-CN</language>
+    <copyright>(c) 2018 xychu.</copyright>
+    <lastBuildDate>Tue, 15 May 2018 23:00:36 +0800</lastBuildDate>
+    
+	<atom:link href="https://edgedef.com/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Python 实现开启 tty 的交互式 Kuberntes 容器控制</title>
+      <link>https://edgedef.com/2018/05/15/python-exec-into-k8s-container-with-tty-enabled/</link>
+      <pubDate>Tue, 15 May 2018 23:00:36 +0800</pubDate>
+      
+      <guid>https://edgedef.com/2018/05/15/python-exec-into-k8s-container-with-tty-enabled/</guid>
+      <description>熟悉 docker 及 kubectl 的同学们，很大概率使用过 -it 的交互方式，效果是通过一个可交互的伪终端来实现对目标容器的控制。
+今天介绍一下，如何通过 Python 程序实现类似 kubectl exec -it 的 Kubernetes 容器控制程序。
+基本原理 在开始控制 Kubernetes 容器之前，我们首先要了解下伪终端或 pty 的基本概念及原理。
+pty 定义  The pty module defines operations for handling the pseudo-terminal concept: starting another process and being able to write to and read from its controlling terminal programmatically.
+ 伪终端就是通过 fork 一个新的进程，并能够通过程序控制从原始控制终端中读取或是写入数据。
+新进程的写入 stdin 会重定向到原生终端的写入 stdin，新进程的输出 stdout 及 stderr 读取自于原始控制终端的 stdout 及 stderr。
+读取和写入部分看起来特别像是管道的概念，但是不同的就是原始进程是一个 termial，除输入和输出外， 还有窗口大小控制、termial mode(raw, cbreak) 还包括 alternative buffer mode（vim 使用的）这些终端独有的特性。</description>
+    </item>
+    
+  </channel>
+</rss>

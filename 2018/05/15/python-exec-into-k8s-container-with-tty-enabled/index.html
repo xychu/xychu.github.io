@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <title>Python 实现开启 tty 的交互式 Kuberntes 容器控制  &middot; Edge Define: To Extend</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<meta name="description" content="" />
+
+<meta name="keywords" content="tty, kubernetes, ">
+
+
+<meta property="og:title" content="Python 实现开启 tty 的交互式 Kuberntes 容器控制  &middot; Edge Define: To Extend ">
+<meta property="og:site_name" content="Edge Define: To Extend"/>
+<meta property="og:url" content="https://edgedef.com/2018/05/15/python-exec-into-k8s-container-with-tty-enabled/" />
+<meta property="og:locale" content="zh-CN">
+
+
+<meta property="og:type" content="article" />
+<meta property="og:description" content=""/>
+<meta property="og:article:published_time" content="2018-05-15T23:00:36&#43;08:00" />
+<meta property="og:article:modified_time" content="2018-05-15T23:00:36&#43;08:00" />
+
+  
+    
+<meta property="og:article:tag" content="tty">
+    
+<meta property="og:article:tag" content="kubernetes">
+    
+  
+
+  
+
+<script type="application/ld+json">
+  {
+    "@context": "http://schema.org",
+    "@type": "Article",
+    "headline": "Python 实现开启 tty 的交互式 Kuberntes 容器控制",
+    "author": {
+      "@type": "Person",
+      "name": "http://profiles.google.com/+?rel=author"
+    },
+    "datePublished": "2018-05-15",
+    "description": "",
+    "wordCount": 379
+  }
+</script>
+
+
+
+<link rel="canonical" href="https://edgedef.com/2018/05/15/python-exec-into-k8s-container-with-tty-enabled/" />
+
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="https://edgedef.com/touch-icon-144-precomposed.png">
+<link href="https://edgedef.com/favicon.png" rel="icon">
+
+<meta name="generator" content="Hugo 0.41" />
+
+  
+<!--[if lt IE 9]>
+<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<link href='https://fonts.googleapis.com/css?family=Merriweather:300%7CRaleway%7COpen+Sans' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" href="https://edgedef.com/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://edgedef.com/css/style.css">
+<link rel="stylesheet" href="https://edgedef.com/css/highlight/default.css">
+
+  
+  
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+	  ga('create', 'UA-42668868-2', 'auto');
+	  ga('send', 'pageview');
+
+	</script>
+
+</head>
+<body>
+  <main id="main-wrapper" class="container main_wrapper has-sidebar">
+    <header id="main-header" class="container main_header">
+  <div class="container brand">
+  <div class="container title h1-like">
+  <a class="baselink" href="https://edgedef.com/">
+  EdgeDef
+
+</a>
+
+</div>
+
+  
+<div class="container topline">
+  
+  Do What You Can&rsquo;t
+
+
+</div>
+
+
+</div>
+
+  <nav class="container nav primary no-print">
+  
+
+<a class="homelink" href="https://edgedef.com/">首页</a>
+
+
+  
+<a href="https://edgedef.com/post" title="Show list of posts">posts</a>
+
+<a href="https://edgedef.com/tags" title="Show list of tags">tags</a>
+
+<a href="https://edgedef.com/topics" title="Show list of topics">topics</a>
+
+
+</nav>
+
+<div class="container nav secondary no-print">
+  
+
+
+<a id="contact-link-github" class="contact_link" href="https://github.com/xychu">
+  <span class="fa fa-github-square"></span><span>github</span></a>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+  
+
+</header>
+
+
+<article id="main-content" class="container main_content single">
+  <header class="container hat">
+  <h1>Python 实现开启 tty 的交互式 Kuberntes 容器控制
+</h1>
+
+  <div class="metas">
+<time datetime="2018-05-15">15 May, 2018</time>
+
+
+  
+  &middot; Read in about 2 min
+  &middot; (379 Words)
+  <br>
+  
+<a class="label" href="https://edgedef.com/tags/tty">tty</a>
+
+<a class="label" href="https://edgedef.com/tags/kubernetes">kubernetes</a>
+
+
+
+</div>
+
+</header>
+
+  <div class="container content">
+  
+
+<p>熟悉 <code>docker</code> 及 <code>kubectl</code> 的同学们，很大概率使用过 <code>-it</code> 的交互方式，效果是通过一个可交互的伪终端来实现对目标容器的控制。</p>
+
+<p>今天介绍一下，如何通过 Python 程序实现类似 <code>kubectl exec -it</code> 的 Kubernetes 容器控制程序。</p>
+
+<h2 id="基本原理">基本原理</h2>
+
+<p>在开始控制 Kubernetes 容器之前，我们首先要了解下伪终端或 <code>pty</code> 的基本概念及原理。</p>
+
+<h3 id="pty-定义"><code>pty</code> 定义</h3>
+
+<blockquote>
+<p>The <code>pty</code> module defines operations for handling the pseudo-terminal concept: starting another process and being able to write to and read from its controlling terminal programmatically.</p>
+</blockquote>
+
+<p>伪终端就是通过 fork 一个新的进程，并能够通过程序控制从原始控制终端中读取或是写入数据。</p>
+
+<p>新进程的写入 <code>stdin</code> 会重定向到原生终端的写入 <code>stdin</code>，新进程的输出 <code>stdout</code> 及 <code>stderr</code> 读取自于原始控制终端的 <code>stdout</code> 及 <code>stderr</code>。</p>
+
+<p>读取和写入部分看起来特别像是管道的概念，但是不同的就是原始进程是一个 <code>termial</code>，除输入和输出外，
+还有窗口大小控制、termial mode(raw, cbreak) 还包括 alternative buffer mode（vim 使用的）这些终端独有的特性。</p>
+
+<p>关于 <code>docker</code> 及 <code>kubectl</code> 来说，当开启了 <code>tty</code> 的容器控制时，实际上都是通过客户端和 HTTP Server 间建立的一个连接来实现的控制及 I/O 管道的数据交换。</p>
+
+<p>更多 Golang 实现细节，可以直接去查看相关的客户端代码实现。</p>
+
+<h3 id="python-客户端实现">Python 客户端实现</h3>
+
+<p>如果你也刚好选用 Python 在实现或者维护了一个 Python 编写的客户端，需要封装实现类似 <code>kubectl exec -it</code> 的效果，
+好消息是，Kubernetes 的官方 Python 库(<a href="https://github.com/kubernetes-client/python">https://github.com/kubernetes-client/python</a>) 就已经支持了这种交互，只是没有明确的使用样例。</p>
+
+<p>我参考 &laquo;Pseudo Terminals in Python&raquo; 实现了一个开启了 <code>tty</code> 并支持 <code>resize WINDOW</code> 的 Python 客户端实现，有需求的可以看一下，希望有帮助。</p>
+
+<h2 id="show-me-the-code">show me the code</h2>
+
+<p>话不多说，直接上代码:</p>
+
+<p>fork 部分：</p>
+
+<pre><code class="language-python">    def spawn(self, argv=None):
+        &quot;&quot;&quot;
+        Create a spawned process.
+        Based on the code for pty.spawn().
+        &quot;&quot;&quot;
+        if not argv:
+            argv = [os.environ['SHELL']]
+
+        pid, master_fd = pty.fork()
+        self.master_fd = master_fd
+        if pid == pty.CHILD:
+            os.execlp(argv[0], *argv)
+
+        old_handler = signal.signal(signal.SIGWINCH, self._signal_winch)
+        try:
+            mode = tty.tcgetattr(pty.STDIN_FILENO)
+            tty.setraw(pty.STDIN_FILENO)
+            restore = 1
+        except tty.error:    # This is the same as termios.error
+            restore = 0
+        self._init_fd()
+        try:
+            self._copy()
+        except (IOError, OSError):
+            if restore:
+                tty.tcsetattr(pty.STDIN_FILENO, tty.TCSAFLUSH, mode)
+
+        self.k8s_stream.close()
+        self.k8s_stream = None
+        if self.master_fd:
+            os.close(self.master_fd)
+            self.master_fd = None
+        signal.signal(signal.SIGWINCH, old_handler)
+</code></pre>
+
+<p>I/O 部分：</p>
+
+<pre><code class="language-python">    def _copy(self):
+        &quot;&quot;&quot;
+        Main select loop. Passes all data to self.master_read() or
+               self.stdin_read().
+        &quot;&quot;&quot;
+        assert self.k8s_stream is not None
+        k8s_stream = self.k8s_stream
+        while True:
+            try:
+                rfds, wfds, xfds = select.select([pty.STDIN_FILENO,
+                                                  k8s_stream.sock.sock],
+                                                 [], [])
+            except select.error as e:
+                no = e.errno if six.PY3 else e[0]
+                if no == errno.EINTR:
+                    continue
+
+            if pty.STDIN_FILENO in rfds:
+                data = os.read(pty.STDIN_FILENO, 1024)
+                self.stdin_read(data)
+            if k8s_stream.sock.sock in rfds:
+                # read from k8s_stream
+                if k8s_stream.peek_stdout():
+                    self.master_read(k8s_stream.read_stdout())
+                # error occurs
+                if k8s_stream.peek_channel(3):
+                    break
+</code></pre>
+
+<p>resize 部分（佩服 Python 客户端基于 Websocket 实现的多路复用，对接 RESIZE_CHANNEL）：</p>
+
+<pre><code class="language-python">    def _set_pty_size(self):
+        &quot;&quot;&quot;
+        Sets the window size of the child pty based on the window size of
+               our own controlling terminal.
+        &quot;&quot;&quot;
+        packed = fcntl.ioctl(pty.STDOUT_FILENO,
+                             termios.TIOCGWINSZ,
+                             struct.pack('HHHH', 0, 0, 0, 0))
+        rows, cols, h_pixels, v_pixels = struct.unpack('HHHH', packed)
+        self.k8s_stream.write_channel(4,
+                                      json.dumps({&quot;Height&quot;: rows,
+                                                  &quot;Width&quot;: cols}))
+</code></pre>
+
+<p>完整代码，请戳这里：<a href="https://github.com/kubernetes-client/python/pull/515/">https://github.com/kubernetes-client/python/pull/515/</a></p>
+
+<p>我已经将基于 Kubernetes Python client 实现的 <code>tty</code> 的例子提交到了上面的 PR。</p>
+
+<p>有兴趣的欢迎围观，发现问题还请不吝赐教。</p>
+
+<p>同时，我录制了一个 try out 的上手视频，里边包含了想要查看运行效果的基本步骤，
+包括 clone 代码，mkvirtualenv, pip 安装依赖, 运行样例等。</p>
+
+<p><img src="/images/python-tty-k8s/python-tty-k8s-cast.png" alt="cast" /></p>
+
+<p>复制并浏览器打开：<a href="https://asciinema.org/a/fOznfIWkZcYdEslY1iJs4HeZc">https://asciinema.org/a/fOznfIWkZcYdEslY1iJs4HeZc</a></p>
+
+<p>整体效果受限于当时的设备和环境，可能尺寸偏大，不便于查看，望见谅。</p>
+
+<blockquote>
+<p>另：其中调整窗口尺寸部分 asciinema 好像还不能很好的支持，所以视频中没有体现出效果，
+大家亲自尝试的时候，可以通过终端的多行输出看出容器中的 <code>tty</code> 尺寸是会随着当前的终端尺寸变化而调整的。</p>
+</blockquote>
+
+<h2 id="refs">Refs:</h2>
+
+<ul>
+<li><a href="http://sqizit.bartletts.id.au/2011/02/14/pseudo-terminals-in-python/">http://sqizit.bartletts.id.au/2011/02/14/pseudo-terminals-in-python/</a> &laquo;Pseudo Terminals in Python&raquo;</li>
+<li><a href="https://github.com/python/cpython/blob/master/Lib/pty.py">https://github.com/python/cpython/blob/master/Lib/pty.py</a> &laquo;Pseudo terminal utilities&raquo;</li>
+<li><a href="https://github.com/kubernetes-client/python-base/blob/master/stream/ws_client.py">https://github.com/kubernetes-client/python-base/blob/master/stream/ws_client.py</a> &laquo;A websocket client with support for channels&raquo;</li>
+</ul>
+
+</div>
+
+
+  <footer class="container">
+  <div class="container navigation no-print">
+  <h2>Navigation</h2>
+  
+  
+
+    
+    <a class="prev" href="https://edgedef.com/2018/04/28/distributed-tensorflow-and-more/" title="Distributed Tensorflow and more">
+      Previous
+    </a>
+    
+
+    
+
+  
+
+
+</div>
+
+  <div class="container comments">
+  <h2>Comments</h2>
+  
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//ethanchu.disqus.com/embed.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+</div>
+
+</footer>
+
+</article>
+      <footer id="main-footer" class="container main_footer">
+  
+
+  <div class="container nav foot no-print">
+  
+
+  <a class="toplink" href="#">back to top</a>
+
+</div>
+
+  <div class="container credits">
+  
+<div class="container footline">
+  
+  code with <i class='fa fa-heart'></i>
+
+
+</div>
+
+
+  
+<div class="container copyright">
+  
+  &copy; 2018 xychu.
+
+
+</div>
+
+
+</div>
+
+</footer>
+
+    </main>
+    
+
+<script type="text/javascript">
+  (function() {
+    
+    
+    if (window.location.hostname == "localhost")
+      return;
+
+    var dsq = document.createElement('script'); dsq.async = true; dsq.type = 'text/javascript';
+    dsq.src = '//ethanchu.disqus.com/count.js';
+    (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+  })();
+</script>
+
+
+
+<script src="https://edgedef.com/js/highlight.pack.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+    
+  </body>
+</html>
+

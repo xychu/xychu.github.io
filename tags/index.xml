@@ -67,6 +67,15 @@
     </item>
     
     <item>
+      <title>Kubernetes</title>
+      <link>https://edgedef.com/tags/kubernetes/</link>
+      <pubDate>Tue, 15 May 2018 23:00:36 +0800</pubDate>
+      
+      <guid>https://edgedef.com/tags/kubernetes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
       <title>Macvlan</title>
       <link>https://edgedef.com/tags/macvlan/</link>
       <pubDate>Sat, 10 Dec 2016 17:00:56 +0800</pubDate>
@@ -90,6 +99,15 @@
       <pubDate>Sat, 28 Apr 2018 23:00:36 +0800</pubDate>
       
       <guid>https://edgedef.com/tags/tenforflow/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Tty</title>
+      <link>https://edgedef.com/tags/tty/</link>
+      <pubDate>Tue, 15 May 2018 23:00:36 +0800</pubDate>
+      
+      <guid>https://edgedef.com/tags/tty/</guid>
       <description></description>
     </item>
     
