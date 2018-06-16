@@ -3,6 +3,11 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://edgedef.com/2018/06/16/build-k8s-cluster-via-kubeadm-on-vbox-vms/</loc>
+    <lastmod>2018-06-16T15:30:36+08:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://edgedef.com/2018/05/15/python-exec-into-k8s-container-with-tty-enabled/</loc>
     <lastmod>2018-05-15T23:00:36+08:00</lastmod>
   </url>
@@ -82,7 +87,7 @@
   
   <url>
     <loc>https://edgedef.com/</loc>
-    <lastmod>2018-05-15T23:00:36+08:00</lastmod>
+    <lastmod>2018-06-16T15:30:36+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -100,13 +105,13 @@
   
   <url>
     <loc>https://edgedef.com/topics/k8s/</loc>
-    <lastmod>2018-05-15T23:00:36+08:00</lastmod>
+    <lastmod>2018-06-16T15:30:36+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://edgedef.com/tags/kubernetes/</loc>
-    <lastmod>2018-05-15T23:00:36+08:00</lastmod>
+    <lastmod>2018-06-16T15:30:36+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -130,7 +135,7 @@
   
   <url>
     <loc>https://edgedef.com/post/</loc>
-    <lastmod>2018-05-15T23:00:36+08:00</lastmod>
+    <lastmod>2018-06-16T15:30:36+08:00</lastmod>
     <priority>0</priority>
   </url>
   
